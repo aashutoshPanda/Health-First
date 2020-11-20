@@ -9,8 +9,8 @@ import {
 import { Button, Block, Input, Text } from "../components";
 import { theme } from "../constants";
 
-const VALID_EMAIL = "guest_user@gmail.com";
-const VALID_PASSWORD = "password";
+const VALID_EMAIL = "contact@react-ui-kit.com";
+const VALID_PASSWORD = "subscribe";
 
 export default class Login extends Component {
   state = {
@@ -39,7 +39,7 @@ export default class Login extends Component {
     this.setState({ errors, loading: false });
 
     if (!errors.length) {
-      navigation.navigate("Settings");
+      navigation.navigate("Browse");
     }
   }
 
