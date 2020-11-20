@@ -9,8 +9,8 @@ import {
 import { Button, Block, Input, Text } from "../components";
 import { theme } from "../constants";
 
-const VALID_EMAIL = "contact@react-ui-kit.com";
-const VALID_PASSWORD = "subscribe";
+const VALID_EMAIL = "guest_user@gmail.com";
+const VALID_PASSWORD = "password";
 
 export default class Login extends Component {
   state = {
