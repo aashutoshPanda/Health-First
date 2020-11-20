@@ -39,7 +39,7 @@ export default class Login extends Component {
     this.setState({ errors, loading: false });
 
     if (!errors.length) {
-      navigation.navigate("Settings");
+      navigation.navigate("Browse");
     }
   }
 

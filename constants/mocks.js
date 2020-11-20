@@ -1,45 +1,45 @@
 const categories = [
   {
     id: "plants",
-    name: "Plants",
-    tags: ["products", "inspirations"],
+    name: "Journal",
+    tags: ["products", "shop"],
     count: 147,
-    image: require("../assets/icons/plants.png")
+    image: require("../assets/icons/journal.png")
   },
   {
     id: "seeds",
-    name: "Seeds",
+    name: "Appointment",
     tags: ["products", "shop"],
     count: 16,
-    image: require("../assets/icons/seeds.png")
+    image: require("../assets/icons/appointment.png")
   },
   {
     id: "flowers",
-    name: "Flowers",
+    name: "Water Intake",
     tags: ["products", "inspirations"],
     count: 68,
-    image: require("../assets/icons/flowers.png")
+    image: require("../assets/icons/drop.png")
   },
   {
     id: "sprayers",
-    name: "Sprayers",
-    tags: ["products", "shop"],
+    name: "Mood Tracker",
+    tags: ["products", "inspirations"],
     count: 17,
-    image: require("../assets/icons/sprayers.png")
+    image: require("../assets/icons/mood.png")
   },
   {
     id: "pots",
-    name: "Pots",
+    name: "Diet",
     tags: ["products", "shop"],
     count: 47,
-    image: require("../assets/icons/pots.png")
+    image: require("../assets/icons/diet.png")
   },
   {
     id: "fertilizers",
-    name: "fertilizers",
+    name: "Chat",
     tags: ["products", "shop"],
     count: 47,
-    image: require("../assets/icons/fertilizers.png")
+    image: require("../assets/icons/chat.png")
   }
 ];
 
@@ -86,4 +86,56 @@ const profile = {
   newsletter: false
 };
 
-export { categories, explore, products, profile };
+const hospital=[
+  {
+    id:1,
+    name:"HealthAlliance Hospital",
+    image:require("../assets/images/hospital.jpg"),
+    thumbnail:require("../assets/icons/hospital.png"),
+    address:"60 Hospital Road, Cambridge"
+  },
+  {
+    id:2,
+    name:"HealthAlliance Hospital",
+    image:require("../assets/images/hospital.jpg"),
+    thumbnail:require("../assets/icons/hospital.png"),
+    address:"60 Hospital Road, Cambridge",
+  },
+  {
+    id:3,
+    name:"HealthAlliance Hospital",
+    image:require("../assets/images/hospital.jpg"),
+    thumbnail:require("../assets/icons/hospital.png"),
+    address:"60 Hospital Road, Cambridge"
+  },
+  {
+    id:4,
+    name:"HealthAlliance Hospital",
+    image:require("../assets/images/hospital.jpg"),
+    thumbnail:require("../assets/icons/hospital.png"),
+    address:"60 Hospital Road, Cambridge"
+  },
+  {
+    id:5,
+    name:"HealthAlliance Hospital",
+    image:require("../assets/images/hospital.jpg"),
+    thumbnail:require("../assets/icons/hospital.png"),
+    address:"60 Hospital Road, Cambridge"
+  },
+  {
+    id:6,
+    name:"HealthAlliance Hospital",
+    image:require("../assets/images/hospital.jpg"),
+    thumbnail:require("../assets/icons/hospital.png"),
+    address:"60 Hospital Road, Cambridge"
+  },
+  {
+    id:7,
+    name:"HealthAlliance Hospital",
+    image:require("../assets/images/hospital.jpg"),
+    thumbnail:require("../assets/icons/hospital.png"),
+    address:"60 Hospital Road, Cambridge"
+  }
+]
+
+export { categories, explore, products, profile ,hospital};

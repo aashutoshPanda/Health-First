@@ -228,7 +228,7 @@ class Welcome extends Component {
             Your Home.
             <Text h1 primary>
               {" "}
-              Healthier.
+              Greener.
             </Text>
           </Text>
           <Text h3 gray2 style={{ marginTop: theme.sizes.padding / 2 }}>
