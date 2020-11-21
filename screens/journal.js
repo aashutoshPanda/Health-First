@@ -14,6 +14,9 @@ import {
   Body,
   Icon,
   Text,
+  List,
+  ListItem,
+  Thumbnail,
 } from "native-base";
 import * as Font from "expo-font";
 
@@ -36,24 +39,38 @@ export default class Journal extends Component {
 
     return (
       <Container>
-        <Header style={{}}>
+        <Header>
           <Left>
             <Button transparent>
-              <Icon name="menu" />
+              <Icon name="arrow-back" />
             </Button>
           </Left>
           <Body>
-            <Title>Header</Title>
+            <Title>Journal</Title>
           </Body>
           <Right />
         </Header>
         <Content>
-          <Text>This is Content Section</Text>
+          <List>
+            <ListItem thumbnail>
+              <Body>
+                <Text>Date</Text>
+                <Text note numberOfLines={1}>
+                  Its time to build a difference . .
+                </Text>
+              </Body>
+              <Right>
+                <Button transparent>
+                  <Text>View</Text>
+                </Button>
+              </Right>
+            </ListItem>
+          </List>
         </Content>
         <Footer>
           <FooterTab>
             <Button full>
-              <Text>Footer</Text>
+              <Text>ADD TODAY'S STORY</Text>
             </Button>
           </FooterTab>
         </Footer>
@@ -61,12 +78,3 @@ export default class Journal extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  Header: {
-    marginTop: -30,
-  },
-  Container: {
-    paddingBottom: 0,
-  },
-});

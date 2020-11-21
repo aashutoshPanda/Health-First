@@ -16,12 +16,14 @@ import Dietplan from "../screens/Dietplan";
 import Moodtracker from "../screens/Moodtracker";
 import Waterlevel from "../screens/Waterlevel";
 import Journal from "../screens/journal";
+import AddToJournal from "../screens/AddToJournal";
 import Chat from "../screens/chat";
 
 import { theme } from "../constants";
 
 const screens = createStackNavigator(
   {
+    AddToJournal,
     Journal,
     Settings,
     Welcome,
