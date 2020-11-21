@@ -1,5 +1,11 @@
 import React, { Component, useState, useEffect } from "react";
-import { StyleSheet, ActivityIndicator, View, Image } from "react-native";
+import {
+  StyleSheet,
+  ActivityIndicator,
+  View,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 
 import {
   Container,
@@ -17,7 +23,8 @@ import {
   List,
   ListItem,
   Thumbnail,
-  ProgressBar,
+  Card,
+  CardItem,
 } from "native-base";
 import * as Font from "expo-font";
 import { useSelector, useDispatch } from "react-redux";
@@ -28,6 +35,7 @@ const dayNumberToday = new Date().getDay();
 
 export default function DietPlan() {
   const [isReady, setReady] = useState(false);
+  const [dayNumber, setDayNumber] = useState(dayNumberToday);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -62,14 +70,50 @@ export default function DietPlan() {
       <Content>
         <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
           {daysCountArray.map((_, key) => (
-            <Image
-              source={mocks.days[key]}
-              style={{
-                borderWidth: dayNumberToday === key ? 2 : 0,
-                ...styles.weekImage,
-              }}
-            />
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => setDayNumber(key)}
+            >
+              <Image
+                source={mocks.days[key]}
+                style={{
+                  borderWidth: dayNumber === key ? 2 : 0,
+                  ...styles.weekImage,
+                }}
+              />
+            </TouchableOpacity>
           ))}
+        </View>
+        <View>
+          <Card style={{ flex: 0 }}>
+            <CardItem>
+              <Left>
+                <Thumbnail
+                  source={{
+                    uri:
+                      "https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png",
+                  }}
+                />
+                <Body>
+                  <Text>Breakfast</Text>
+                  <Text note>April 15, 2016</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem>
+              <Body>
+                <Text>Eggs Mashed Potatoes</Text>
+              </Body>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent textStyle={{ color: "#87838B" }}>
+                  <Icon name="logo-github" />
+                  <Text>1,926 Calories</Text>
+                </Button>
+              </Left>
+            </CardItem>
+          </Card>
         </View>
       </Content>
     </Container>
