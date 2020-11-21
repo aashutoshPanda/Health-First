@@ -12,16 +12,18 @@ import Browse from "../screens/Browse";
 import Product from "../screens/Product";
 import Settings from "../screens/Settings";
 import Appointment from "../screens/Appointment";
-import Dietplan from "../screens/Dietplan"
-import Moodtracker from "../screens/Moodtracker"
-import Waterlevel from "../screens/Waterlevel"
-import Journal from "../screens/journal"
-import Chat from "../screens/chat"
+import Dietplan from "../screens/Dietplan";
+import Moodtracker from "../screens/Moodtracker";
+import Waterlevel from "../screens/Waterlevel";
+import Journal from "../screens/journal";
+import Chat from "../screens/chat";
 
 import { theme } from "../constants";
 
 const screens = createStackNavigator(
   {
+    Journal,
+    Settings,
     Welcome,
     Login,
     SignUp,
@@ -29,13 +31,11 @@ const screens = createStackNavigator(
     Browse,
     Explore,
     Appointment,
-    Journal,
     Waterlevel,
     Moodtracker,
     Dietplan,
     Chat,
     Product,
-    Settings
   },
   {
     defaultNavigationOptions: {
@@ -43,20 +43,20 @@ const screens = createStackNavigator(
         height: theme.sizes.base * 4,
         backgroundColor: theme.colors.white, // or 'white
         borderBottomColor: "transparent",
-        elevation: 0 // for android
+        elevation: 0, // for android
       },
       headerBackImage: <Image source={require("../assets/icons/back.png")} />,
       headerBackTitle: null,
       headerLeftContainerStyle: {
         alignItems: "center",
         marginLeft: theme.sizes.base * 2,
-        paddingRight: theme.sizes.base
+        paddingRight: theme.sizes.base,
       },
       headerRightContainerStyle: {
         alignItems: "center",
-        paddingRight: theme.sizes.base
-      }
-    }
+        paddingRight: theme.sizes.base,
+      },
+    },
   }
 );
 

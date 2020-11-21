@@ -1,19 +1,63 @@
 import React, { Component } from "react";
-import {StyleSheet} from 'react-native'
-import { theme, mocks } from "../constants";
-import { Button, Block,Input, Text } from "../components";
+import { StyleSheet, ActivityIndicator } from "react-native";
 
-export default class Journal extends Component{
+import {
+  Container,
+  Header,
+  Title,
+  Content,
+  Footer,
+  FooterTab,
+  Button,
+  Left,
+  Right,
+  Body,
+  Icon,
+  Text,
+} from "native-base";
+import * as Font from "expo-font";
 
-    render(){
-        return(
-            <Block padding={[0, theme.sizes.base * 2]}>
-              <Text h1 bold>
-                Journal
-              </Text>
-            </Block>
-        )
+export default class Journal extends Component {
+  state = {
+    isReady: false,
+  };
+
+  UNSAFE_componentWillMount = async () => {
+    await Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+    });
+    this.setState({ isReady: true });
+  };
+  render() {
+    if (!this.state.isReady) {
+      return <ActivityIndicator />;
     }
-}
 
-const styles=StyleSheet.create({})
+    return (
+      <Container>
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name="menu" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Header</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content>
+          <Text>This is Content Section</Text>
+        </Content>
+        <Footer>
+          <FooterTab>
+            <Button full>
+              <Text>Footer</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
+      </Container>
+    );
+  }
+}
