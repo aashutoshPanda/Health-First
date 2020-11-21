@@ -36,7 +36,7 @@ export default class Journal extends Component {
 
     return (
       <Container>
-        <Header>
+        <Header style={{}}>
           <Left>
             <Button transparent>
               <Icon name="menu" />
@@ -61,3 +61,12 @@ export default class Journal extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  Header: {
+    marginTop: -30,
+  },
+  Container: {
+    paddingBottom: 0,
+  },
+});

@@ -6,7 +6,7 @@ import { Asset } from "expo-asset";
 
 import Navigation from "./navigation";
 import { Block } from "./components";
-
+console.disableYellowBox = true;
 // import all used images
 const images = [
   require("./assets/icons/back.png"),
@@ -28,19 +28,19 @@ const images = [
   require("./assets/images/illustration_1.png"),
   require("./assets/images/illustration_2.png"),
   require("./assets/images/illustration_3.png"),
-  require("./assets/images/avatar.png")
+  require("./assets/images/avatar.png"),
 ];
 
 export default class App extends React.Component {
   state = {
-    isLoadingComplete: false
+    isLoadingComplete: false,
   };
 
   handleResourcesAsync = async () => {
     // we're caching all the images
     // for better performance on the app
 
-    const cacheImages = images.map(image => {
+    const cacheImages = images.map((image) => {
       return Asset.fromModule(image).downloadAsync();
     });
 
@@ -52,7 +52,7 @@ export default class App extends React.Component {
       return (
         <AppLoading
           startAsync={this.handleResourcesAsync}
-          onError={error => console.warn(error)}
+          onError={(error) => console.warn(error)}
           onFinish={() => this.setState({ isLoadingComplete: true })}
         />
       );
