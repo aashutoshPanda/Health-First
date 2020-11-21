@@ -6,6 +6,9 @@ import { Asset } from "expo-asset";
 
 import Navigation from "./navigation";
 import { Block } from "./components";
+
+import store from "./store";
+import { Provider } from "react-redux";
 console.disableYellowBox = true;
 // import all used images
 const images = [
@@ -59,9 +62,11 @@ export default class App extends React.Component {
     }
 
     return (
-      <Block white>
-        <Navigation />
-      </Block>
+      <Provider store={store}>
+        <Block white>
+          <Navigation />
+        </Block>
+      </Provider>
     );
   }
 }

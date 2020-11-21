@@ -23,6 +23,7 @@ import { theme } from "../constants";
 
 const screens = createStackNavigator(
   {
+    Waterlevel,
     AddToJournal,
     Journal,
     Settings,
@@ -33,7 +34,7 @@ const screens = createStackNavigator(
     Browse,
     Explore,
     Appointment,
-    Waterlevel,
+
     Moodtracker,
     Dietplan,
     Chat,

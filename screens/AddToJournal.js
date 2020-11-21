@@ -20,7 +20,7 @@ import {
 } from "native-base";
 import * as Font from "expo-font";
 
-export default class Journal extends Component {
+export default class AddToJournal extends Component {
   state = {
     selected2: undefined,
     rating: 0,
