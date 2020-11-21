@@ -1,6 +1,7 @@
 const categories = [
   {
     id: "plants",
+    goto:"Journal",
     name: "Journal",
     tags: ["products", "shop"],
     count: 147,
@@ -8,6 +9,7 @@ const categories = [
   },
   {
     id: "seeds",
+    goto:"Explore",
     name: "Appointment",
     tags: ["products", "shop"],
     count: 16,
@@ -15,6 +17,7 @@ const categories = [
   },
   {
     id: "flowers",
+    goto:"Waterlevel",
     name: "Water Intake",
     tags: ["products", "inspirations"],
     count: 68,
@@ -22,6 +25,7 @@ const categories = [
   },
   {
     id: "sprayers",
+    goto:"Moodtracker",
     name: "Mood Tracker",
     tags: ["products", "inspirations"],
     count: 17,
@@ -29,6 +33,7 @@ const categories = [
   },
   {
     id: "pots",
+    goto:"Dietplan",
     name: "Diet",
     tags: ["products", "shop"],
     count: 47,
@@ -36,6 +41,7 @@ const categories = [
   },
   {
     id: "fertilizers",
+    goto:"Chat",
     name: "Chat",
     tags: ["products", "shop"],
     count: 47,

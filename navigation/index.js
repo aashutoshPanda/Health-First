@@ -12,6 +12,11 @@ import Browse from "../screens/Browse";
 import Product from "../screens/Product";
 import Settings from "../screens/Settings";
 import Appointment from "../screens/Appointment";
+import Dietplan from "../screens/Dietplan"
+import Moodtracker from "../screens/Moodtracker"
+import Waterlevel from "../screens/Waterlevel"
+import Journal from "../screens/journal"
+import Chat from "../screens/chat"
 
 import { theme } from "../constants";
 
@@ -21,9 +26,14 @@ const screens = createStackNavigator(
     Login,
     SignUp,
     Forgot,
+    Browse,
     Explore,
     Appointment,
-    Browse,
+    Journal,
+    Waterlevel,
+    Moodtracker,
+    Dietplan,
+    Chat,
     Product,
     Settings
   },
