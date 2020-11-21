@@ -68,7 +68,7 @@ export default function WaterLevel() {
         </Text>
 
         <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
-          {items.map((ele) => (
+          {items.map((_) => (
             // <Thumbnail source={mocks.glassImage} />
             <Thumbnail
               square

@@ -143,5 +143,13 @@ const hospital = [
     address: "60 Hospital Road, Cambridge",
   },
 ];
-
-export { categories, explore, products, profile, hospital, glassImage };
+const days = [
+  require("../assets/images/day-0.png"),
+  require("../assets/images/day-1.png"),
+  require("../assets/images/day-2.png"),
+  require("../assets/images/day-3.png"),
+  require("../assets/images/day-4.png"),
+  require("../assets/images/day-5.png"),
+  require("../assets/images/day-6.png"),
+];
+export { categories, explore, products, profile, hospital, glassImage, days };
