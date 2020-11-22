@@ -1,0 +1,4 @@
+gunicorn
+Flask
+opencv-python
+cloudinary
