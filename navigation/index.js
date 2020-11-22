@@ -26,11 +26,12 @@ import {View} from 'react-native'
 
 const screens = createStackNavigator(
   {
+    
     Welcome,
     Dietplan,
-    Waterlevel,
     AddToJournal,
     Journal,
+    Waterlevel,
     Settings,
     Login,
     SignUp,

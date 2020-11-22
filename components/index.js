@@ -7,5 +7,6 @@ import Text from "./Text";
 import Progress from "./Progress";
 import Divider from "./Divider";
 import Switch from "./Switch";
+import SemiCircleProgress from "./semi"
 
-export { Block, Badge, Button, Card, Input, Text, Progress, Divider, Switch };
+export { SemiCircleProgress,Block, Badge, Button, Card, Input, Text, Progress, Divider, Switch };

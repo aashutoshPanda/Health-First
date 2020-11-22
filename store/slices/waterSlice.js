@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const waterLevelSlice = createSlice({
   name: "waterLevel",
   initialState: {
-    level: 5,
+    level: 500,
   },
   reducers: {
     incrementByAmount: (state, action) => {

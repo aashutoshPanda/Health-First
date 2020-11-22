@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
-import { StyleSheet, ActivityIndicator, View } from "react-native";
+import { StyleSheet, ActivityIndicator, View,Image,TouchableOpacity } from "react-native";
+import CircleSizeSelector from 'react-native-circle-size-selector'
 
 import {
   Container,
@@ -13,16 +14,15 @@ import {
   Right,
   Body,
   Icon,
-  Text,
   List,
   ListItem,
   Thumbnail,
-  ProgressBar,
-  Image,
+  ProgressBar
 } from "native-base";
 import * as Font from "expo-font";
 import { useSelector, useDispatch } from "react-redux";
 import { selectLevel, incrementAsync } from "../store/slices/waterSlice";
+import {SemiCircleProgress,Block,Text} from "../components/index"
 import { mocks } from "../constants";
 
 export default function WaterLevel() {
@@ -47,27 +47,40 @@ export default function WaterLevel() {
   }
   // const items = new Array(5).map((ele) => <Icon name="home" />);
   const items = new Array(level).fill("");
+
+  const onChange = (value) => {
+    level=value
+  }
+
+
+
   return (
-    <Container>
-      <Header>
-        <Left>
-          <Button transparent>
-            <Icon name="arrow-back" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>Water Log</Title>
-        </Body>
-        <Right />
-      </Header>
-      <Content>
-        <Text>
-          Health experts commonly recommend eight 8-ounce glasses of water every
-          daya, which equals about 2 liters, or half a gallon a day. Today's
-          Count = {level}
+    <Block>
+
+        <View style={{width:"100%"}}>
+          <Text style={{margin:20}} h1 bold>
+            Water Log
+          </Text>
+        </View>
+
+        <Text style={{marginTop:10,marginLeft:20,marginRight:20,fontStyle:"italic",fontSize:13}}>
+          <Icon name="quote"/> &nbsp;Health experts commonly recommend eight 8-ounce glasses of water every
+          daya, which equals about 2 liters, or half a gallon a day. 
         </Text>
 
-        <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
+        <Block center style={{marginTop:70,marginBottom:-100}}>
+        <SemiCircleProgress
+            percentage={level/80}
+            progressColor={"steelblue"}
+        >
+            <Text style={{ fontSize: 32, color:"steelblue" }}>{level/80}%</Text>
+        </SemiCircleProgress>
+        </Block>
+
+        <View style={{marginTop:-10,marginBottom:30}}>
+          <Text center style={{fontSize:25}}>{level/1000}/8 Lts</Text>
+        </View>
+        {/* <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
           {items.map((_) => (
             // <Thumbnail source={mocks.glassImage} />
             <Thumbnail
@@ -76,15 +89,40 @@ export default function WaterLevel() {
               style={{ margin: 10 }}
             />
           ))}
-        </View>
-      </Content>
-      <Footer>
-        <FooterTab>
-          <Button rounded onPress={() => dispatch(incrementAsync(1))}>
+        </View> */}
+      
+      {/* <Button rounded onPress={() => dispatch(incrementAsync(240))}>
             <Text>Add water</Text>
-          </Button>
-        </FooterTab>
-      </Footer>
-    </Container>
+          </Button> */}
+
+      
+      <Text style={{margin:20,fontWeight:"bold",fontSize:20}}>Add your intake: </Text>
+
+      <View style={{width:"100%",flex:1,flexDirection:"row",justifyContent:"center"}}>
+        
+        <TouchableOpacity onPress={() => dispatch(incrementAsync(240))}>
+
+        <View style={{flex:1,flexDirection:"column",alignItems:"center"}} >
+          <Image style={{width:50,height:50,margin:25}} source={require("../assets/icons/glass-of-water.png")}/>
+          <Text style={{margin:10,fontWeight:"bold",fontSize:15}}>240 ml</Text>
+        </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => dispatch(incrementAsync(750))}>
+        <View style={{flex:1,flexDirection:"column",alignItems:"center"}}>
+          <Image style={{width:50,height:50,margin:25}} source={require("../assets/icons/zam-zam.png")}/>
+          <Text style={{margin:10,fontWeight:"bold",fontSize:15}}>750 ml</Text>
+        </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => dispatch(incrementAsync(1000))}>
+        <View style={{flex:1,flexDirection:"column",alignItems:"center"}}>
+          <Image style={{width:50,height:50,margin:25}} source={require("../assets/icons/drink-water.png")}/>
+          <Text style={{margin:10,fontWeight:"bold",fontSize:15}}>1000 ml</Text>
+        </View>
+        </TouchableOpacity>
+        
+      </View>
+    </Block>
   );
 }
