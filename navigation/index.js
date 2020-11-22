@@ -14,7 +14,7 @@ import Settings from "../screens/Settings";
 import Appointment from "../screens/Appointment";
 import Dietplan from "../screens/Dietplan";
 import Moodtracker from "../screens/Moodtracker";
-import Waterlevel from "../screens/Waterlevel";
+// import Waterlevel from "../screens/Waterlevel";
 import Journal from "../screens/journal";
 import AddToJournal from "../screens/AddToJournal";
 import CataractTest from "../screens/CataractTest";
@@ -28,15 +28,15 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
-    
+    Login,
+    SignUp,
     Welcome,
     Dietplan,
     AddToJournal,
     Journal,
-    Waterlevel,
+    // Waterlevel,
     Settings,
-    Login,
-    SignUp,
+
     Forgot,
     Browse,
     Explore,

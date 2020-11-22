@@ -1,118 +1,118 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   ActivityIndicator,
   Keyboard,
   KeyboardAvoidingView,
   StyleSheet,
-  SafeAreaView
+  SafeAreaView,
 } from "react-native";
 
-import { Container, Header, Title, Content, Icon, Left,Right, Body } from "native-base";
+import {
+  Container,
+  Header,
+  Title,
+  Content,
+  Icon,
+  Left,
+  Right,
+  Body,
+} from "native-base";
 
 import { Button, Block, Input, Text } from "../components";
 import { theme } from "../constants";
 
-const VALID_EMAIL = "contact@react-ui-kit.com";
-const VALID_PASSWORD = "subscribe";
+const VALID_EMAIL = "test@gmail.com";
+const VALID_PASSWORD = "123456";
+import {
+  logInAsync,
+  registerAsync,
+  selectLoading,
+  setDetails,
+  setLoading,
+  selectIsLoggedIn,
+} from "../store/slices/authSlice";
 
-export default class Login extends Component {
-  state = {
-    email: VALID_EMAIL,
-    password: VALID_PASSWORD,
-    errors: [],
-    loading: false
-  };
+export default function Login(props) {
+  const [email, setEmail] = useState(VALID_EMAIL);
+  const [password, setPassword] = useState(VALID_PASSWORD);
+  const loading = useSelector(selectLoading);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const { navigation } = props;
+  const dispatch = useDispatch();
 
-  handleLogin() {
-    const { navigation } = this.props;
-    const { email, password } = this.state;
-    const errors = [];
-
+  const handleLogin = async () => {
     Keyboard.dismiss();
-    this.setState({ loading: true });
-
-    // check with backend API or with some static data
-    if (email !== VALID_EMAIL) {
-      errors.push("email");
-    }
-    if (password !== VALID_PASSWORD) {
-      errors.push("password");
-    }
-
-    this.setState({ errors, loading: false });
-
-    if (!errors.length) {
-      navigation.navigate("Browse");
-    }
+    dispatch(setLoading(true));
+    console.log("logg in called");
+    dispatch(logInAsync(email, password));
+  };
+  // const { loading, errors } = state;
+  // const hasErrors = (key) => (errors.includes(key) ? styles.hasErrors : null);
+  console.log("is loged in nav", isLoggedIn);
+  if (isLoggedIn) {
+    navigation.navigate("Browse");
   }
-
-  render() {
-    const { navigation } = this.props;
-    const { loading, errors } = this.state;
-    const hasErrors = key => (errors.includes(key) ? styles.hasErrors : null);
-
-    return (
-      <KeyboardAvoidingView style={styles.login}>
-
-        <Block style={{marginTop:30}} padding={[0, theme.sizes.base * 2]}>
-          <Text h1 bold>
-            Login
-          </Text>
-          <Block middle>
-            <Input
-              label="Email"
-              error={hasErrors("email")}
-              style={[styles.input, hasErrors("email")]}
-              defaultValue={this.state.email}
-              onChangeText={text => this.setState({ email: text })}
-            />
-            <Input
-              secure
-              label="Password"
-              error={hasErrors("password")}
-              style={[styles.input, hasErrors("password")]}
-              defaultValue={this.state.password}
-              onChangeText={text => this.setState({ password: text })}
-            />
-            <Button gradient onPress={() => this.handleLogin()}>
-              {loading ? (
-                <ActivityIndicator size="small" color="white" />
-              ) : (
-                <Text bold white center>
-                  Login
-                </Text>
-              )}
-            </Button>
-
-            <Button onPress={() => navigation.navigate("Forgot")}>
-              <Text
-                gray
-                caption
-                center
-                style={{ textDecorationLine: "underline" }}
-              >
-                Forgot your password?
+  return (
+    <KeyboardAvoidingView style={styles.login}>
+      <Block style={{ marginTop: 30 }} padding={[0, theme.sizes.base * 2]}>
+        <Text h1 bold>
+          Login
+        </Text>
+        <Block middle>
+          <Input
+            label="Email"
+            // error={hasErrors("email")}
+            style={[styles.input]}
+            defaultValue={email}
+            onChangeText={(email) => setEmail(email)}
+          />
+          <Input
+            secure
+            label="Password"
+            // error={hasErrors("password")}
+            style={[styles.input]}
+            defaultValue={password}
+            onChangeText={(password) => setPassword(password)}
+          />
+          <Button gradient onPress={() => handleLogin()}>
+            {loading ? (
+              <ActivityIndicator size="small" color="white" />
+            ) : (
+              <Text bold white center>
+                Login
               </Text>
-            </Button>
-          </Block>
+            )}
+          </Button>
+
+          <Button onPress={() => navigation.navigate("Forgot")}>
+            <Text
+              gray
+              caption
+              center
+              style={{ textDecorationLine: "underline" }}
+            >
+              Forgot your password?
+            </Text>
+          </Button>
         </Block>
-      </KeyboardAvoidingView>
-    );
-  }
+      </Block>
+    </KeyboardAvoidingView>
+  );
 }
 
 const styles = StyleSheet.create({
   login: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   input: {
     borderRadius: 0,
     borderWidth: 0,
     borderBottomColor: theme.colors.gray2,
-    borderBottomWidth: StyleSheet.hairlineWidth
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   hasErrors: {
-    borderBottomColor: theme.colors.accent
-  }
+    borderBottomColor: theme.colors.accent,
+  },
 });
