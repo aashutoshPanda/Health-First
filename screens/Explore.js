@@ -153,7 +153,7 @@ class Explore extends Component {
     ))
 
     return (
-      <Block>
+      <Block style={{marginTop:20}}>
         <Block flex={false} row center space="between" style={styles.header}>
           <Text h1 bold>
             Explore
