@@ -7,10 +7,11 @@ from flask import Flask, render_template, request, jsonify
 import cv2
 import numpy as np
 import environ
+from flask_cors import CORS
 env = environ.Env()
 environ.Env.read_env()
-
 app = Flask(__name__)
+CORS(app)
 
 app.config['UPLOAD_FOLDER'] = os.getcwd() + "/api_uploaded_files/"
 
@@ -84,4 +85,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True, use_reloader=True)

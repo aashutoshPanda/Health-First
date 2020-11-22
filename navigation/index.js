@@ -17,12 +17,14 @@ import Moodtracker from "../screens/Moodtracker";
 import Waterlevel from "../screens/Waterlevel";
 import Journal from "../screens/journal";
 import AddToJournal from "../screens/AddToJournal";
+import CataractTest from "../screens/CataractTest";
+import Camera from "../screens/Camera";
 import Chat from "../screens/chat";
 
 import { theme } from "../constants";
 
-import { Button, Block, Text } from "../components/index"
-import {View} from 'react-native'
+import { Button, Block, Text } from "../components/index";
+import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
@@ -41,28 +43,29 @@ const screens = createStackNavigator(
     Appointment,
     Chat,
     Product,
-  },{
+  },
+  {
     defaultNavigationOptions: {
-      headerTitle:()=>(
-         <View style={{width:"85%",justifyContent:"center"}}>
-            <Text h1 center bold>
+      headerTitle: () => (
+        <View style={{ width: "85%", justifyContent: "center" }}>
+          <Text h1 center bold>
             HEALTH
             <Text h1 primary>
               {" "}
               FIRST
             </Text>
           </Text>
-         </View>
+        </View>
       ),
       headerStyle: {
-       marginTop:0,
-       borderBottomColor: "transparent",
-       elevation:1
+        marginTop: 0,
+        borderBottomColor: "transparent",
+        elevation: 1,
       },
-      headerTitleStyle: {  
-        fontWeight: 'bold',  
-     },  
-    }
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
+    },
   }
 );
 

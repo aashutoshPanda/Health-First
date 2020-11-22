@@ -80,7 +80,7 @@ const explore = [
   require("../assets/images/explore_5.png"),
   require("../assets/images/explore_6.png"),
 ];
-const glassImage = require("../assets/images/water-glass.png");
+
 const profile = {
   username: "react-ui-kit",
   location: "Europe",
@@ -152,4 +152,15 @@ const days = [
   require("../assets/images/day-5.png"),
   require("../assets/images/day-6.png"),
 ];
-export { categories, explore, products, profile, hospital, glassImage, days };
+const glassImage = require("../assets/images/water-glass.png");
+const cataractLogo = require("../assets/images/cataract-logo.png");
+export {
+  categories,
+  explore,
+  products,
+  profile,
+  hospital,
+  glassImage,
+  days,
+  cataractLogo,
+};
