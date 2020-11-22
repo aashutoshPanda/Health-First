@@ -17,12 +17,16 @@ import Moodtracker from "../screens/Moodtracker";
 import Waterlevel from "../screens/Waterlevel";
 import Journal from "../screens/journal";
 import AddToJournal from "../screens/AddToJournal";
+import CataractTest from "../screens/CataractTest";
+import Camera from "../screens/Camera";
 import Chat from "../screens/chat";
 
 import { theme } from "../constants";
 
 const screens = createStackNavigator(
   {
+    Camera,
+    CataractTest,
     Dietplan,
     Waterlevel,
     AddToJournal,
