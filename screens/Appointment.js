@@ -30,11 +30,11 @@ export default class Appointment extends Component{
     render(){
         return(
             
-            <Block padding={[0, theme.sizes.base * 2]}>
-              <Text h1 bold>
+            <Block style={{marginTop:10,marginBottom:0}} padding={[0, theme.sizes.base * 2]}>
+              <Text center h1 bold>
                 Confirm Booking
               </Text>
-              <Block middle>
+              <Block style={{marginTop:50}} middle>
                 <Input
                   label="Name"
                   style={[styles.input]}

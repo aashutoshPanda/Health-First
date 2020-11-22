@@ -65,9 +65,9 @@ export default class Forgot extends Component {
 
     return (
       <KeyboardAvoidingView style={styles.forgot} behavior="padding">
-        <Block padding={[0, theme.sizes.base * 2]}>
+        <Block style={{marginTop:20}} padding={[0, theme.sizes.base * 2]}>
           <Text h1 bold>
-            Forgot
+              Reset Password
           </Text>
           <Block middle>
             <Input

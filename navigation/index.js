@@ -23,16 +23,17 @@ import Chat from "../screens/chat";
 
 import { theme } from "../constants";
 
+import { Button, Block, Text } from "../components/index";
+import { View } from "react-native";
+
 const screens = createStackNavigator(
   {
-    Camera,
-    CataractTest,
+    Welcome,
     Dietplan,
     Waterlevel,
     AddToJournal,
     Journal,
     Settings,
-    Welcome,
     Login,
     SignUp,
     Forgot,
@@ -44,23 +45,24 @@ const screens = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
+      headerTitle: () => (
+        <View style={{ width: "85%", justifyContent: "center" }}>
+          <Text h1 center bold>
+            HEALTH
+            <Text h1 primary>
+              {" "}
+              FIRST
+            </Text>
+          </Text>
+        </View>
+      ),
       headerStyle: {
-        height: 0,
-        marginTop: -30,
-        backgroundColor: theme.colors.white, // or 'white
+        marginTop: 0,
         borderBottomColor: "transparent",
-        elevation: 0, // for android
+        elevation: 1,
       },
-      headerBackImage: <Image source={require("../assets/icons/back.png")} />,
-      headerBackTitle: null,
-      headerLeftContainerStyle: {
-        alignItems: "center",
-        marginLeft: theme.sizes.base * 2,
-        paddingRight: theme.sizes.base,
-      },
-      headerRightContainerStyle: {
-        alignItems: "center",
-        paddingRight: theme.sizes.base,
+      headerTitleStyle: {
+        fontWeight: "bold",
       },
     },
   }
