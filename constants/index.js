@@ -1,7 +1,5 @@
-import * as theme from './theme';
-import * as mocks from './mocks';
+import * as theme from "./theme";
+import * as mocks from "./mocks";
+import * as data from "./data";
 
-export {
-  theme,
-  mocks,
-};
+export { theme, mocks, data };

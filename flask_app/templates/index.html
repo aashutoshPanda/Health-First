@@ -1,0 +1,26 @@
+<!-- #######  THIS IS A COMMENT - Visible only in the source editor #########-->
+
+<h2>Welcome To PDF Scaper</h2>
+<p style="font-size: 1em;">
+  Make sure name of pdf file does not contain characters like ' ', '#', '$',
+  '%', '&', '+',',', '/', ':', ';', '=', '?','@', '[', '\\', ']', '^', '`','{',
+  '|', '}', '~', "'" etc.
+</p>
+
+<p style="font-size: 1.5em;">To extract text from a PDF</p>
+
+<form action="./text" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" />
+  <input type="submit" />
+</form>
+
+<p style="font-size: 1.5em;">To extract text without stop-words from a PDF</p>
+
+<form
+  action="./text_without_stopwords"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <input type="file" name="file" />
+  <input type="submit" />
+</form>
