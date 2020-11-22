@@ -3,8 +3,11 @@ import {
   ActivityIndicator,
   Keyboard,
   KeyboardAvoidingView,
-  StyleSheet
+  StyleSheet,
+  SafeAreaView
 } from "react-native";
+
+import { Container, Header, Title, Content, Icon, Left,Right, Body } from "native-base";
 
 import { Button, Block, Input, Text } from "../components";
 import { theme } from "../constants";
@@ -49,8 +52,9 @@ export default class Login extends Component {
     const hasErrors = key => (errors.includes(key) ? styles.hasErrors : null);
 
     return (
-      <KeyboardAvoidingView style={styles.login} behavior="padding">
-        <Block padding={[0, theme.sizes.base * 2]}>
+      <KeyboardAvoidingView style={styles.login}>
+
+        <Block style={{marginTop:30}} padding={[0, theme.sizes.base * 2]}>
           <Text h1 bold>
             Login
           </Text>

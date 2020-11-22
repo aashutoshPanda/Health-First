@@ -9,6 +9,8 @@ import {
 
 import { Button, Block, Input, Text } from "../components";
 import { theme } from "../constants";
+import {Header } from "native-base";
+
 
 export default class SignUp extends Component {
   state = {
@@ -58,7 +60,8 @@ export default class SignUp extends Component {
 
     return (
       <KeyboardAvoidingView style={styles.signup} behavior="padding">
-        <Block padding={[0, theme.sizes.base * 2]}>
+     
+        <Block style={{marginTop:50}} padding={[0, theme.sizes.base * 2]}>
           <Text h1 bold>
             Sign Up
           </Text>
