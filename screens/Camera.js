@@ -59,7 +59,7 @@ class Camera extends Component {
     );
   }
   _cataractTest = () => {
-    const apiUrl = "http://192.168.1.5:8080/detect";
+    const apiUrl = "http://192.168.0.104:8080/detect";
     const pictureuri = this.props.camera.imagePath;
 
     this.props.setLoading(true);

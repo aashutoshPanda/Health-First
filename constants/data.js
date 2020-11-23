@@ -1,205 +1,415 @@
-export const data = [
+export const diet = [
   [
     {
-      meal:["Egg","mashed potatoes","milk"],
-      calories:{
-        carbohydrate:40,
-        protein:50,
-        calcium:50,
-        total:200
-      }
+      meal:["Egg","Mashed Potatoes","Milk"],
+      calories:[
+        {
+          value: 40,
+          label: 'Carbohydrates',
+          color: '#fca311',
+        }, {
+          value: 50,
+          label: 'Protein',
+          color: '#14213d'
+        }, {
+          value: 55,
+          label: 'Calcium',
+          color: '#ef233c'
+        }
+    
+      ]
     },
     {
       meal:["Green Veggies","Bread","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:300,
-        vitamins:300,
-        total:1100
-      }
+      calories:[
+        {
+          value: 400,
+          label: 'Carbohydrates',
+          color: '#8a817c',
+        }, {
+          value: 500,
+          label: 'Protein',
+          color: '#fb5607'
+        }, {
+          value: 700,
+          label: 'Vitamins',
+          color: '#80b918'
+        }
+    
+      ]
     },
     {
-      meal:["Chicken","Rice","salad"],
-      calories:{
-        carbohydrate:500,
-        protein:600,
-        calcium:500,
-        total:1600
-      }
+      meal:["Prawns","Rice","Salad"],
+      calories:[
+        {
+          value: 300,
+          label: 'Carbohydrates',
+          color: '#008000',
+        }, {
+          value: 600,
+          label: 'Protein',
+          color: '#bd1f36'
+        }, {
+          value: 500,
+          label: 'Vitamins',
+          color: '#ccc5b9'
+        }
+    
+      ]
     }
   ],
   [
     {
-      meal:["Oats","fruits","milk"],
-      calories:{
-        carbohydrate:40,
-        protein:30,
-        calcium:70,
-        total:140
-      }
+      meal:["Oats","Fruits","Milk"],
+      calories:[
+        {
+          value: 60,
+          label: 'Carbohydrates',
+          color: '#034078',
+        }, {
+          value: 30,
+          label: 'Protein',
+          color: '#e71d36'
+        }, {
+          value: 65,
+          label: 'Calcium',
+          color: '#c8553d'
+        }
+    
+      ]
     },
     {
       meal:["Green Veggies","Bread","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:400,
-        vitamins:300,
-        total:1200
-      }
+      calories:[
+        {
+          value: 60,
+          label: 'Carbohydrates',
+          color: '#50514f',
+        }, {
+          value: 30,
+          label: 'Protein',
+          color: '#f25f5c'
+        }, {
+          value: 65,
+          label: 'Vitamins',
+          color: '#247ba0'
+        }
+    
+      ]
     },
     {
       meal:["Fish","Rice","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:700,
-        calcium:500,
-        total:1700
-      }
+      calories:[
+        {
+          value: 60,
+          label: 'Carbohydrates',
+          color: '#ffd23f',
+        }, {
+          value: 30,
+          label: 'Protein',
+          color: '#3bceac'
+        }, {
+          value: 65,
+          label: 'Calcium',
+          color: '#0ead69'
+        }
+    
+      ]
     }
   ],
   [
     {
-      meal:["Egg","mashed potatoes","milk"],
-      calories:{
-        carbohydrate:40,
-        protein:50,
-        calcium:50,
-        total:200
-      }
+      meal:["Egg","Mashed Potatoes","Milk"],
+      calories:[
+        {
+          value: 40,
+          label: 'Carbohydrates',
+          color: '#fca311',
+        }, {
+          value: 50,
+          label: 'Protein',
+          color: '#14213d'
+        }, {
+          value: 55,
+          label: 'Calcium',
+          color: '#ef233c'
+        }
+    
+      ]
     },
     {
       meal:["Green Veggies","Bread","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:300,
-        vitamins:300,
-        total:1100
-      }
+      calories:[
+        {
+          value: 400,
+          label: 'Carbohydrates',
+          color: '#8a817c',
+        }, {
+          value: 500,
+          label: 'Protein',
+          color: '#fb5607'
+        }, {
+          value: 700,
+          label: 'Vitamins',
+          color: '#80b918'
+        }
+    
+      ]
     },
     {
-      meal:["Chicken","Rice","salad"],
-      calories:{
-        carbohydrate:500,
-        protein:600,
-        calcium:500,
-        total:1600
-      }
+      meal:["Prawns","Rice","Salad"],
+      calories:[
+        {
+          value: 300,
+          label: 'Carbohydrates',
+          color: '#008000',
+        }, {
+          value: 600,
+          label: 'Protein',
+          color: '#bd1f36'
+        }, {
+          value: 500,
+          label: 'Vitamins',
+          color: '#ccc5b9'
+        }
+    
+      ]
     }
   ],
   [
     {
-      meal:["Oats","fruits","milk"],
-      calories:{
-        carbohydrate:40,
-        protein:30,
-        calcium:70,
-        total:140
-      }
+      meal:["Oats","Fruits","Milk"],
+      calories:[
+        {
+          value: 60,
+          label: 'Carbohydrates',
+          color: '#034078',
+        }, {
+          value: 30,
+          label: 'Protein',
+          color: '#e71d36'
+        }, {
+          value: 65,
+          label: 'Calcium',
+          color: '#c8553d'
+        }
+    
+      ]
     },
     {
       meal:["Green Veggies","Bread","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:400,
-        vitamins:300,
-        total:1200
-      }
+      calories:[
+        {
+          value: 60,
+          label: 'Carbohydrates',
+          color: '#50514f',
+        }, {
+          value: 30,
+          label: 'Protein',
+          color: '#f25f5c'
+        }, {
+          value: 65,
+          label: 'Vitamins',
+          color: '#247ba0'
+        }
+    
+      ]
     },
     {
       meal:["Fish","Rice","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:700,
-        calcium:500,
-        total:1700
-      }
+      calories:[
+        {
+          value: 60,
+          label: 'Carbohydrates',
+          color: '#ffd23f',
+        }, {
+          value: 30,
+          label: 'Protein',
+          color: '#3bceac'
+        }, {
+          value: 65,
+          label: 'Calcium',
+          color: '#0ead69'
+        }
+    
+      ]
     }
   ],
   [
     {
-      meal:["Egg","mashed potatoes","milk"],
-      calories:{
-        carbohydrate:40,
-        protein:50,
-        calcium:50,
-        total:200
-      }
+      meal:["Egg","Mashed Potatoes","Milk"],
+      calories:[
+        {
+          value: 40,
+          label: 'Carbohydrates',
+          color: '#fca311',
+        }, {
+          value: 50,
+          label: 'Protein',
+          color: '#14213d'
+        }, {
+          value: 55,
+          label: 'Calcium',
+          color: '#ef233c'
+        }
+    
+      ]
     },
     {
       meal:["Green Veggies","Bread","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:300,
-        vitamins:300,
-        total:1100
-      }
+      calories:[
+        {
+          value: 400,
+          label: 'Carbohydrates',
+          color: '#8a817c',
+        }, {
+          value: 500,
+          label: 'Protein',
+          color: '#fb5607'
+        }, {
+          value: 700,
+          label: 'Vitamins',
+          color: '#80b918'
+        }
+    
+      ]
     },
     {
-      meal:["Chicken","Rice","salad"],
-      calories:{
-        carbohydrate:500,
-        protein:600,
-        calcium:500,
-        total:1600
-      }
+      meal:["Prawns","Rice","Salad"],
+      calories:[
+        {
+          value: 300,
+          label: 'Carbohydrates',
+          color: '#008000',
+        }, {
+          value: 600,
+          label: 'Protein',
+          color: '#bd1f36'
+        }, {
+          value: 500,
+          label: 'Vitamins',
+          color: '#ccc5b9'
+        }
+    
+      ]
     }
   ],
   [
     {
-      meal:["Oats","fruits","milk"],
-      calories:{
-        carbohydrate:40,
-        protein:30,
-        calcium:70,
-        total:140
-      }
+      meal:["Oats","Fruits","Milk"],
+      calories:[
+        {
+          value: 60,
+          label: 'Carbohydrates',
+          color: '#034078',
+        }, {
+          value: 30,
+          label: 'Protein',
+          color: '#e71d36'
+        }, {
+          value: 65,
+          label: 'Calcium',
+          color: '#c8553d'
+        }
+    
+      ]
     },
     {
       meal:["Green Veggies","Bread","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:400,
-        vitamins:300,
-        total:1200
-      }
+      calories:[
+        {
+          value: 60,
+          label: 'Carbohydrates',
+          color: '#50514f',
+        }, {
+          value: 30,
+          label: 'Protein',
+          color: '#f25f5c'
+        }, {
+          value: 65,
+          label: 'Vitamins',
+          color: '#247ba0'
+        }
+    
+      ]
     },
     {
       meal:["Fish","Rice","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:700,
-        calcium:500,
-        total:1700
-      }
+      calories:[
+        {
+          value: 60,
+          label: 'Carbohydrates',
+          color: '#ffd23f',
+        }, {
+          value: 30,
+          label: 'Protein',
+          color: '#3bceac'
+        }, {
+          value: 65,
+          label: 'Calcium',
+          color: '#0ead69'
+        }
+    
+      ]
     }
   ],
   [
     {
-      meal:["Egg","mashed potatoes","milk"],
-      calories:{
-        carbohydrate:40,
-        protein:50,
-        calcium:50,
-        total:200
-      }
+      meal:["Egg","Mashed Potatoes","Milk"],
+      calories:[
+        {
+          value: 40,
+          label: 'Carbohydrates',
+          color: '#fca311',
+        }, {
+          value: 50,
+          label: 'Protein',
+          color: '#14213d'
+        }, {
+          value: 55,
+          label: 'Calcium',
+          color: '#ef233c'
+        }
+    
+      ]
     },
     {
       meal:["Green Veggies","Bread","Salad"],
-      calories:{
-        carbohydrate:500,
-        protein:300,
-        vitamins:300,
-        total:1100
-      }
+      calories:[
+        {
+          value: 400,
+          label: 'Carbohydrates',
+          color: '#8a817c',
+        }, {
+          value: 500,
+          label: 'Protein',
+          color: '#fb5607'
+        }, {
+          value: 700,
+          label: 'Vitamins',
+          color: '#80b918'
+        }
+    
+      ]
     },
     {
-      meal:["Chicken","Rice","salad"],
-      calories:{
-        carbohydrate:500,
-        protein:600,
-        calcium:500,
-        total:1600
-      }
+      meal:["Prawns","Rice","Salad"],
+      calories:[
+        {
+          value: 300,
+          label: 'Carbohydrates',
+          color: '#008000',
+        }, {
+          value: 600,
+          label: 'Protein',
+          color: '#bd1f36'
+        }, {
+          value: 500,
+          label: 'Vitamins',
+          color: '#ccc5b9'
+        }
+    
+      ]
     }
   ]
 ];

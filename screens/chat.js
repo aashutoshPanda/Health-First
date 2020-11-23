@@ -10,7 +10,7 @@ export default function Chat(){
     setMessages([
       {
         _id: 1,
-        text: 'Good boi here,How can I help you?',
+        text: 'This is an auto generated response, please describe your problem?',
         createdAt: new Date(),
         user: {
           _id: 2,

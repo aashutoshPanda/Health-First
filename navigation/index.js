@@ -29,15 +29,12 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
-    Explore,
-    MyAppointment,
+    Welcome,
     Camera,
     Login,
     SignUp,
-    Welcome,
     Dietplan,
     Browse,
-    Camera,
     AddToJournal,
     Journal,
     Settings,
