@@ -32,7 +32,7 @@ class AddToJournal extends Component {
   state = {
     selected2: undefined,
     rating: 0,
-    textFilled: "defautl value",
+    textFilled: "",
   };
 
   UNSAFE_componentWillMount = async () => {
@@ -50,18 +50,20 @@ class AddToJournal extends Component {
   handleAddEntry() {
     const { id } = this.props.auth;
     const { rating, textFilled } = this.state;
-    const date = today.replace(/_/g, "-");
+    const date = today.replace(/\//g, "_");
     this.props.addEntryAsync(id, rating, textFilled, date);
   }
   handleTextChange = (e) => {
-    // e.preventDefault();
-    console.log("filled = ", e.nativeEvent.text);
     this.setState({ textFilled: e.nativeEvent.text });
     return e.nativeEvent.text;
   };
   render() {
     if (!this.state.isReady) {
       return <ActivityIndicator />;
+    }
+    const { navigation } = this.props;
+    if (this.props.journal.shouldNavigate) {
+      navigation.navigate("Journal");
     }
     return (
       <Container>

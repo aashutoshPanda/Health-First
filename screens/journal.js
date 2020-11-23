@@ -41,9 +41,11 @@ class Journal extends Component {
     if (!this.state.isReady) {
       return <ActivityIndicator />;
     }
+
     const { navigation } = this.props;
     const { journals } = this.props.journal;
     const items = [];
+
     for (const [key, value] of Object.entries(journals)) {
       const { content, rating } = value;
       const date = key.replace(/_/g, "-");
@@ -78,7 +80,11 @@ class Journal extends Component {
           <Right />
         </Header>
         <Content>
-          <List>{items.map((item) => item)}</List>
+          {this.props.journal.loading ? (
+            <ActivityIndicator />
+          ) : (
+            <List>{items.map((item) => item)}</List>
+          )}
         </Content>
         <Footer>
           <FooterTab>
