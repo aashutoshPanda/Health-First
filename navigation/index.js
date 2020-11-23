@@ -28,6 +28,7 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
+    Camera,
     Welcome,
     Dietplan,
     Browse,
@@ -57,7 +58,7 @@ const screens = createStackNavigator(
         </View>
       ),
       headerStyle: {
-        marginTop: 0,
+        marginTop: -30,
         borderBottomColor: "transparent",
         elevation: 1,
       },
