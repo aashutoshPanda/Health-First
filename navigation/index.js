@@ -28,10 +28,10 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
+    Welcome,
     Camera,
     Login,
     SignUp,
-    Welcome,
     Dietplan,
     Browse,
     AddToJournal,
