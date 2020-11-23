@@ -1,6 +1,7 @@
 import app from "firebase/app";
 import "firebase/auth";
 import "firebase/firebase-firestore";
+import { journalSlice } from "./store/slices/journalSlice";
 
 const config = {
   apiKey: "AIzaSyA5jRKgEBojarPr-BpgyCJ-Y3Ld0VAAxoo",
@@ -14,7 +15,10 @@ const config = {
 };
 class Firebase {
   constructor() {
-    app.initializeApp(config);
+    if (!app.apps.length) {
+      app.initializeApp(config);
+    }
+
     this.auth = app.auth();
     this.db = app.firestore();
   }
@@ -189,6 +193,18 @@ class Firebase {
       });
   }
   // ------------------------------------- Journal Log ----------------------------
+  async getJournals() {
+    console.log("inside get journals");
+    const patientId = this.auth.currentUser.uid;
+    this.db
+      .collection("journalLog")
+      .get()
+      .then((snapshot) => {
+        const docIds = snapshot.docs.map((doc) => doc.id);
+        console.log(docIds);
+      });
+  }
+
   async updateJournalLog(rating, content, date) {
     const patientId = this.auth.currentUser.uid;
 
@@ -216,7 +232,7 @@ class Firebase {
         } else {
           console.log("len = ", querySnapshot.size);
           const result = querySnapshot.docs[0];
-          result.ref.update({ patientId, date, rating, content });
+          return result.ref.update({ patientId, date, rating, content });
         }
       })
       .catch(function (error) {

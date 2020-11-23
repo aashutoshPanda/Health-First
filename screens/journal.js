@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, ActivityIndicator } from "react-native";
-
+import { connect } from "react-redux";
 import {
   Container,
   Header,
@@ -20,7 +20,8 @@ import {
 } from "native-base";
 import * as Font from "expo-font";
 
-export default class Journal extends Component {
+import { addEntry, getJournalsAsync } from "../store/slices/journalSlice";
+class Journal extends Component {
   state = {
     isReady: false,
   };
@@ -32,11 +33,15 @@ export default class Journal extends Component {
     });
     this.setState({ isReady: true });
   };
+  componentDidMount() {
+    console.log("called componentDidMountcomponentDidMount did mount");
+    this.props.getJournalsAsync();
+  }
   render() {
     if (!this.state.isReady) {
       return <ActivityIndicator />;
     }
-
+    console.log("journals", this.props.journals);
     return (
       <Container>
         <Header>
@@ -78,3 +83,10 @@ export default class Journal extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return { journals: state.journal.journals };
+};
+
+export default connect(mapStateToProps, { addEntry, getJournalsAsync })(
+  Journal
+);

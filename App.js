@@ -9,6 +9,18 @@ import { Block } from "./components";
 
 import store from "./store";
 import { Provider } from "react-redux";
+import { YellowBox } from "react-native";
+// import { decode, encode } from "base-64";
+
+// if (!global.btoa) {
+//   global.btoa = encode;
+// }
+
+// if (!global.atob) {
+//   global.atob = decode;
+// }
+YellowBox.ignoreWarnings(["Warning: ..."]);
+
 console.disableYellowBox = true;
 // import all used images
 const images = [

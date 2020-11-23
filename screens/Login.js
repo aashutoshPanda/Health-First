@@ -44,12 +44,11 @@ export default function Login(props) {
   const handleLogin = async () => {
     Keyboard.dismiss();
     dispatch(setLoading(true));
-    console.log("logg in called");
     dispatch(logInAsync(email, password));
   };
   // const { loading, errors } = state;
   // const hasErrors = (key) => (errors.includes(key) ? styles.hasErrors : null);
-  console.log("is loged in nav", isLoggedIn);
+
   if (isLoggedIn) {
     navigation.navigate("Browse");
   }
