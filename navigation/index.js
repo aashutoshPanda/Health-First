@@ -28,10 +28,10 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
-    Camera,
     Welcome,
     Dietplan,
     Browse,
+    Camera,
     AddToJournal,
     Journal,
     Waterlevel,
@@ -58,7 +58,7 @@ const screens = createStackNavigator(
         </View>
       ),
       headerStyle: {
-        marginTop: -30,
+        marginTop: 0,
         borderBottomColor: "transparent",
         elevation: 1,
       },
