@@ -5,9 +5,9 @@ export const cameraSlice = createSlice({
   initialState: {
     imageTaken: false,
     imageUrl: "",
-    apiResponseUrl: "",
-    apiRequestWait: true,
-    apiRequestSuccess: true,
+    laoding: false,
+    result: true,
+    showUploadButtons: true,
   },
   reducers: {
     setImageTaken: (state, action) => {

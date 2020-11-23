@@ -28,6 +28,7 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
+    Camera,
     Login,
     SignUp,
     Welcome,
