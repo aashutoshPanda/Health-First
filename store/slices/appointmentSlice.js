@@ -9,7 +9,8 @@ export const appointmentSlice = createSlice({
     searchData: [],
     selectedData: {
       address: "",
-      with: "",
+      withId: "",
+      withName: "",
       date: "",
       reason: "",
       time: "",
@@ -17,14 +18,21 @@ export const appointmentSlice = createSlice({
     },
   },
   reducers: {
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
     setMyAppointments: (state, action) => {
       state.myAppointments.push(action.payload);
+    },
+    setSearchData: (state, action) => {
+      state.searchData = action.payload;
     },
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
     setAppointment: (state, action) => {
-      state.selectedData.with = action.payload.with;
+      state.selectedData.withName = action.payload.withName;
+      state.selectedData.withId = action.payload.withId;
       state.selectedData.address = action.payload.address;
     },
     setAdditionalData: (state, action) => {
@@ -35,7 +43,8 @@ export const appointmentSlice = createSlice({
     },
     reset: (state, action) => {
       state.selectedData.address = "";
-      state.selectedData.with = "";
+      state.selectedData.withName = "";
+      state.selectedData.withId = "";
       state.selectedData.date = "";
       state.selectedData.reason = "";
       state.selectedData.time = "";
@@ -43,6 +52,17 @@ export const appointmentSlice = createSlice({
     },
   },
 });
+
+export const {
+  setMyAppointments,
+  setAppointment,
+  setAdditionalData,
+  setLoading,
+  reset,
+  setSearchQuery,
+  setSearchData,
+} = appointmentSlice.actions;
+
 export const getMyAppointmentsAsync = (id) => (dispatch) => {
   dispatch(setLoading(true));
   const db = firebase.database();
@@ -55,21 +75,22 @@ export const getSearchDataAsync = () => (dispatch) => {
   dispatch(setLoading(true));
   const db = firebase.database();
   db.ref(`user/`).on("value", (snapshot) => {
-    const data = snapshot.val().filter((ele) => ele.type !== "patient");
-    dispatch(setMyAppointments(data));
+    console.log("snap", snapshot.val());
+    const dataAsObject = snapshot.val();
+    const filteredData = [];
+    for (const [key, value] of Object.entries(dataAsObject)) {
+      if (dataAsObject[key]["type"] !== "patient") {
+        filteredData.push({ withId: key, ...dataAsObject[key] });
+      }
+    }
+    dispatch(setSearchData(filteredData));
     dispatch(setLoading(false));
   });
 };
-export const {
-  setMyAppointments,
-  setAppointment,
-  setLoading,
-  reset,
-} = appointmentSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
+// will call the thunk withId the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
