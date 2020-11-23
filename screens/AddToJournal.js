@@ -55,9 +55,9 @@ class AddToJournal extends Component {
   }
   handleTextChange = (e) => {
     // e.preventDefault();
-    console.log("filled = ", e.target.value);
-    this.setState({ textFilled: e.target.value });
-    return e.target.value;
+    console.log("filled = ", e.nativeEvent.text);
+    this.setState({ textFilled: e.nativeEvent.text });
+    return e.nativeEvent.text;
   };
   render() {
     if (!this.state.isReady) {
