@@ -25,11 +25,11 @@ const categories = [
   },
   {
     id: "sprayers",
-    goto: "Moodtracker",
-    name: "Mood Tracker",
+    goto: "Camera",
+    name: "Cataract Test",
     tags: ["products", "inspirations"],
     count: 17,
-    image: require("../assets/icons/mood.png"),
+    image: require("../assets/icons/cataract.png"),
   },
   {
     id: "pots",

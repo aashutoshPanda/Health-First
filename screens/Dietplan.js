@@ -41,7 +41,7 @@ const dayNumberToday = new Date().getDay();
 export default function DietPlan() {
   const [isReady, setReady] = useState(false);
   const [dayNumber, setDayNumber] = useState(dayNumberToday);
-  const [foodType, setFoodType] = useState(0);
+  const [foodType, setFoodType] = useState(2);
   const dispatch = useDispatch();
 
   useEffect(() => {
