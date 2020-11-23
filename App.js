@@ -10,15 +10,7 @@ import { Block } from "./components";
 import store from "./store";
 import { Provider } from "react-redux";
 import { YellowBox } from "react-native";
-// import { decode, encode } from "base-64";
 
-// if (!global.btoa) {
-//   global.btoa = encode;
-// }
-
-// if (!global.atob) {
-//   global.atob = decode;
-// }
 YellowBox.ignoreWarnings(["Warning: ..."]);
 
 console.disableYellowBox = true;
@@ -45,6 +37,22 @@ const images = [
   require("./assets/images/illustration_3.png"),
   require("./assets/images/avatar.png"),
 ];
+import * as firebase from "firebase";
+import "firebase/firestore";
+const config = {
+  apiKey: "AIzaSyA5jRKgEBojarPr-BpgyCJ-Y3Ld0VAAxoo",
+  authDomain: "health-management-app-cb4d6.firebaseapp.com",
+  databaseURL: "https://health-management-app-cb4d6.firebaseio.com",
+  projectId: "health-management-app-cb4d6",
+  storageBucket: "health-management-app-cb4d6.appspot.com",
+  messagingSenderId: "1012152980855",
+  appId: "1:1012152980855:web:4cdab364c26c028f2a7d72",
+  measurementId: "G-9S2GLZP9SP",
+};
+// firebase.initializeApp(config);
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
 
 export default class App extends React.Component {
   state = {

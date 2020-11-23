@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import firebase from "../../firebase";
+// import firebase from "../../firebase";
 export const appointmentSlice = createSlice({
   name: "appointment",
   initialState: {},

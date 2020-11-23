@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import firebase from "../../firebase";
+import * as firebase from "firebase";
 export const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -35,18 +35,13 @@ export const { setDetails, setLoading } = authSlice.actions;
 export const logInAsync = (email, password) => (dispatch) => {
   dispatch(setLoading(true));
   firebase
-    .login(email, password)
+    .auth()
+    .signInWithEmailAndPassword(email, password)
     .then(() => {
-      const name = firebase.getCurrentUsername();
-      const id = firebase.getCurrentUserid();
-      dispatch(
-        setDetails({
-          loading: false,
-          isLoggedIn: true,
-          name,
-          id,
-        })
-      );
+      const name =
+        firebase.auth().currentUser && firebase.auth().currentUser.displayName;
+      const id = firebase.auth().currentUser && firebase.auth().currentUser.uid;
+      dispatch(setDetails({ loading: false, isLoggedIn: true, name, id }));
     })
     .catch(function (error) {
       dispatch(setLoading(false));
@@ -69,5 +64,6 @@ export const logOutAsync = () => (dispatch) => {
 
 export const selectLoading = (state) => state.auth.loading;
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+export const selectUserId = (state) => state.auth.id;
 
 export default authSlice.reducer;

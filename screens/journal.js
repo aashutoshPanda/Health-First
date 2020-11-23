@@ -21,6 +21,7 @@ import {
 import * as Font from "expo-font";
 
 import { addEntry, getJournalsAsync } from "../store/slices/journalSlice";
+
 class Journal extends Component {
   state = {
     isReady: false,
@@ -34,14 +35,34 @@ class Journal extends Component {
     this.setState({ isReady: true });
   };
   componentDidMount() {
-    console.log("called componentDidMountcomponentDidMount did mount");
-    this.props.getJournalsAsync();
+    this.props.getJournalsAsync(this.props.auth.id);
   }
   render() {
     if (!this.state.isReady) {
       return <ActivityIndicator />;
     }
-    console.log("journals", this.props.journals);
+    const { journals } = this.props.journal;
+    const items = [];
+    for (const [key, value] of Object.entries(journals)) {
+      const { content, rating } = value;
+      const date = key.replace(/_/g, "-");
+      const item = (
+        <ListItem thumbnail>
+          <Body>
+            <Text>{date}</Text>
+            <Text note numberOfLines={1}>
+              content : {content} rating : {rating}
+            </Text>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Text>View</Text>
+            </Button>
+          </Right>
+        </ListItem>
+      );
+      items.push(item);
+    }
     return (
       <Container>
         <Header>
@@ -56,21 +77,7 @@ class Journal extends Component {
           <Right />
         </Header>
         <Content>
-          <List>
-            <ListItem thumbnail>
-              <Body>
-                <Text>Date</Text>
-                <Text note numberOfLines={1}>
-                  Its time to build a difference . .
-                </Text>
-              </Body>
-              <Right>
-                <Button transparent>
-                  <Text>View</Text>
-                </Button>
-              </Right>
-            </ListItem>
-          </List>
+          <List>{items.map((item) => item)}</List>
         </Content>
         <Footer>
           <FooterTab>
@@ -84,7 +91,8 @@ class Journal extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  return { journals: state.journal.journals };
+  const { auth, journal } = state;
+  return { auth, journal };
 };
 
 export default connect(mapStateToProps, { addEntry, getJournalsAsync })(

@@ -1,13 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import firebase from "../../firebase";
+import * as firebase from "firebase";
+
 export const journalSlice = createSlice({
   name: "journal",
   initialState: {
-    journals: [],
+    journals: {},
   },
   reducers: {
     addEntry: (state, action) => {
-      state.journals.push(action.payload);
+      state.journals = action.payload;
     },
   },
 });
@@ -25,10 +26,10 @@ export const addEntryAsync = (id, rating, content, date) => (dispatch) => {
     // dispatch(addEntry({ content, date, id, rating }));
   });
 };
-export const getJournalsAsync = () => (dispatch) => {
-  console.log("get journals async redux called");
-  firebase.getJournals().then(() => {
-    console.log("then of get journals");
+export const getJournalsAsync = (id) => (dispatch) => {
+  const db = firebase.database();
+  db.ref(`journal/${id}`).on("value", (snapshot) => {
+    dispatch(addEntry(snapshot.val()));
   });
 };
 // The function below is called a selector and allows us to select a value from
