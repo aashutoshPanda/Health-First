@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
   ActivityIndicator,
-  Button,
   Clipboard,
   Image,
   Share,
@@ -11,7 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Thumbnail } from "native-base";
+import { Thumbnail ,Button,Icon} from "native-base";
 import { Constants } from "expo";
 import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
@@ -28,6 +27,11 @@ export default class CameraExample extends Component {
 
     return (
       <View style={styles.container}>
+        <View style={{width:"100%"}}>
+          <Text style={{margin:20,fontWeight:"bold",fontSize:25}}>
+            Cataract Test
+          </Text>
+        </View>
         <Image source={mocks.cataractLogo} style={styles.logo} />
         <StatusBar barStyle="default" />
         <View style={{ flex: 1, justifyContent: "center" }}>
@@ -78,15 +82,25 @@ export default class CameraExample extends Component {
   _inputButtons = () => {
     return (
       <>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1,marginBottom:-100 }}>
           <Button
-            style={styles.container}
+            iconLeft
+            success
             onPress={this._pickImage}
-            title="Upload from device"
-          />
+          >
+            <Icon name='download'/>
+            <Text style={{color:"white",fontWeight:"bold",margin:20}}>Upload from device</Text>
+          </Button>
         </View>
         <View style={{ flex: 1 }}>
-          <Button onPress={this._takePhoto} title="Take a photo" />
+          <Button
+            iconLeft
+            success
+            onPress={this._takePhoto}
+          >
+            <Icon name='camera'/>
+            <Text style={{color:"white",fontWeight:"bold",margin:20}}>Take a Picture</Text>
+          </Button>
         </View>
       </>
     );
@@ -107,6 +121,8 @@ export default class CameraExample extends Component {
     if (!image) {
       return;
     }
+
+    console.log(image)
 
     return (
       <View style={styles.maybeRenderContainer}>

@@ -73,7 +73,7 @@ export default function WaterLevel() {
             percentage={level/80}
             progressColor={"steelblue"}
         >
-            <Text style={{ fontSize: 32, color:"steelblue" }}>{level/80}%</Text>
+            <Text style={{ fontSize: 32, color:"steelblue" }}>{Math.floor(level/80)}%</Text>
         </SemiCircleProgress>
         </Block>
 

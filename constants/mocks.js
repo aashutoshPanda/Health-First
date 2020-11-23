@@ -144,14 +144,15 @@ const hospital = [
   },
 ];
 const days = [
-  require("../assets/images/day-0.png"),
-  require("../assets/images/day-1.png"),
-  require("../assets/images/day-2.png"),
-  require("../assets/images/day-3.png"),
-  require("../assets/images/day-4.png"),
-  require("../assets/images/day-5.png"),
-  require("../assets/images/day-6.png"),
+  require("../assets/icons/icons8-sunday-64.png"),
+  require("../assets/icons/icons8-monday-64.png"),
+  require("../assets/icons/icons8-tuesday-64.png"),
+  require("../assets/icons/icons8-wednesday-64.png"),
+  require("../assets/icons/icons8-thursday-64.png"),
+  require("../assets/icons/icons8-friday-64.png"),
+  require("../assets/icons/icons8-saturday-64.png"),
 ];
+
 const glassImage = require("../assets/images/water-glass.png");
 const cataractLogo = require("../assets/images/cataract-logo.png");
 export {

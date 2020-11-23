@@ -1,16 +1,205 @@
-export const data = {
-  0: {
-    0: {
-      totalCalories: 2500,
-      items: ["eggs", "rice"],
+export const data = [
+  [
+    {
+      meal:["Egg","mashed potatoes","milk"],
+      calories:{
+        carbohydrate:40,
+        protein:50,
+        calcium:50,
+        total:200
+      }
     },
-    1: {
-      totalCalories: 2500,
-      items: ["eggs", "rice"],
+    {
+      meal:["Green Veggies","Bread","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:300,
+        vitamins:300,
+        total:1100
+      }
     },
-    2: {
-      totalCalories: 2500,
-      items: ["eggs", "rice"],
+    {
+      meal:["Chicken","Rice","salad"],
+      calories:{
+        carbohydrate:500,
+        protein:600,
+        calcium:500,
+        total:1600
+      }
+    }
+  ],
+  [
+    {
+      meal:["Oats","fruits","milk"],
+      calories:{
+        carbohydrate:40,
+        protein:30,
+        calcium:70,
+        total:140
+      }
     },
-  },
-};
+    {
+      meal:["Green Veggies","Bread","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:400,
+        vitamins:300,
+        total:1200
+      }
+    },
+    {
+      meal:["Fish","Rice","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:700,
+        calcium:500,
+        total:1700
+      }
+    }
+  ],
+  [
+    {
+      meal:["Egg","mashed potatoes","milk"],
+      calories:{
+        carbohydrate:40,
+        protein:50,
+        calcium:50,
+        total:200
+      }
+    },
+    {
+      meal:["Green Veggies","Bread","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:300,
+        vitamins:300,
+        total:1100
+      }
+    },
+    {
+      meal:["Chicken","Rice","salad"],
+      calories:{
+        carbohydrate:500,
+        protein:600,
+        calcium:500,
+        total:1600
+      }
+    }
+  ],
+  [
+    {
+      meal:["Oats","fruits","milk"],
+      calories:{
+        carbohydrate:40,
+        protein:30,
+        calcium:70,
+        total:140
+      }
+    },
+    {
+      meal:["Green Veggies","Bread","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:400,
+        vitamins:300,
+        total:1200
+      }
+    },
+    {
+      meal:["Fish","Rice","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:700,
+        calcium:500,
+        total:1700
+      }
+    }
+  ],
+  [
+    {
+      meal:["Egg","mashed potatoes","milk"],
+      calories:{
+        carbohydrate:40,
+        protein:50,
+        calcium:50,
+        total:200
+      }
+    },
+    {
+      meal:["Green Veggies","Bread","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:300,
+        vitamins:300,
+        total:1100
+      }
+    },
+    {
+      meal:["Chicken","Rice","salad"],
+      calories:{
+        carbohydrate:500,
+        protein:600,
+        calcium:500,
+        total:1600
+      }
+    }
+  ],
+  [
+    {
+      meal:["Oats","fruits","milk"],
+      calories:{
+        carbohydrate:40,
+        protein:30,
+        calcium:70,
+        total:140
+      }
+    },
+    {
+      meal:["Green Veggies","Bread","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:400,
+        vitamins:300,
+        total:1200
+      }
+    },
+    {
+      meal:["Fish","Rice","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:700,
+        calcium:500,
+        total:1700
+      }
+    }
+  ],
+  [
+    {
+      meal:["Egg","mashed potatoes","milk"],
+      calories:{
+        carbohydrate:40,
+        protein:50,
+        calcium:50,
+        total:200
+      }
+    },
+    {
+      meal:["Green Veggies","Bread","Salad"],
+      calories:{
+        carbohydrate:500,
+        protein:300,
+        vitamins:300,
+        total:1100
+      }
+    },
+    {
+      meal:["Chicken","Rice","salad"],
+      calories:{
+        carbohydrate:500,
+        protein:600,
+        calcium:500,
+        total:1600
+      }
+    }
+  ]
+];

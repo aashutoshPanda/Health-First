@@ -19,18 +19,18 @@ import {
   Right,
   Body,
   Icon,
-  Text,
   List,
   ListItem,
   Thumbnail,
   Card,
   CardItem,
 } from "native-base";
+import {Text} from '../components/index'
 import * as Font from "expo-font";
 import { useSelector, useDispatch } from "react-redux";
 import { selectLevel, incrementAsync } from "../store/slices/waterSlice";
 import { mocks } from "../constants";
-
+import {data} from '../constants/data'
 const dayNumberToday = new Date().getDay();
 
 export default function DietPlan() {
@@ -56,19 +56,13 @@ export default function DietPlan() {
   const daysCountArray = new Array(7).fill("");
   return (
     <Container>
-      <Header>
-        <Left>
-          <Button transparent>
-            <Icon name="arrow-back" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>Diet Plan</Title>
-        </Body>
-        <Right />
-      </Header>
+      <View style={{width:"100%"}}>
+          <Text style={{margin:20}} h1 bold>
+            Diet Plan
+          </Text>
+        </View>
       <Content>
-        <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
+        <View style={{marginTop:20,width:"100%", flex: 1, flexDirection: "row", flexWrap: "wrap",justifyContent:"center" }}>
           {daysCountArray.map((_, key) => (
             <TouchableOpacity
               style={styles.button}
@@ -77,44 +71,14 @@ export default function DietPlan() {
               <Image
                 source={mocks.days[key]}
                 style={{
-                  borderWidth: dayNumber === key ? 2 : 0,
+                  borderWidth: dayNumber === key ? 4 : 0,
                   ...styles.weekImage,
                 }}
               />
             </TouchableOpacity>
           ))}
         </View>
-        <View>
-          <Card style={{ flex: 0 }}>
-            <CardItem>
-              <Left>
-                <Thumbnail
-                  source={{
-                    uri:
-                      "https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png",
-                  }}
-                />
-                <Body>
-                  <Text>Breakfast</Text>
-                  <Text note>April 15, 2016</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>Eggs Mashed Potatoes</Text>
-              </Body>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent textStyle={{ color: "#87838B" }}>
-                  <Icon name="logo-github" />
-                  <Text>1,926 Calories</Text>
-                </Button>
-              </Left>
-            </CardItem>
-          </Card>
-        </View>
+        
       </Content>
     </Container>
   );
@@ -123,7 +87,8 @@ const styles = StyleSheet.create({
   weekImage: {
     width: 80,
     height: 80,
-    borderRadius: 80 / 2,
-    borderColor: "red",
-  },
+    borderRadius: 80 / 4.5,
+    borderColor: "black",
+    elevation:10
+  }
 });
