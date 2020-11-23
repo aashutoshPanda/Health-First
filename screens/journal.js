@@ -20,7 +20,7 @@ import {
 } from "native-base";
 import * as Font from "expo-font";
 
-import { addEntry, getJournalsAsync } from "../store/slices/journalSlice";
+import { getJournalsAsync } from "../store/slices/journalSlice";
 
 class Journal extends Component {
   state = {
@@ -41,6 +41,7 @@ class Journal extends Component {
     if (!this.state.isReady) {
       return <ActivityIndicator />;
     }
+    const { navigation } = this.props;
     const { journals } = this.props.journal;
     const items = [];
     for (const [key, value] of Object.entries(journals)) {
@@ -81,7 +82,7 @@ class Journal extends Component {
         </Content>
         <Footer>
           <FooterTab>
-            <Button full>
+            <Button onPress={() => navigation.navigate("AddToJournal")} full>
               <Text>ADD TODAY'S STORY</Text>
             </Button>
           </FooterTab>
@@ -95,6 +96,4 @@ const mapStateToProps = (state) => {
   return { auth, journal };
 };
 
-export default connect(mapStateToProps, { addEntry, getJournalsAsync })(
-  Journal
-);
+export default connect(mapStateToProps, { getJournalsAsync })(Journal);

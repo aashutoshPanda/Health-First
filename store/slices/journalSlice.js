@@ -21,10 +21,13 @@ export const { addEntry } = journalSlice.actions;
 // code can then be executed and other actions can be dispatched
 
 export const addEntryAsync = (id, rating, content, date) => (dispatch) => {
-  firebase.updateJournalLog(rating, content, date).then((data) => {
-    console.log("added to add entry fucntion data ", data);
-    // dispatch(addEntry({ content, date, id, rating }));
-  });
+  console.log("entries", id, rating, content, date);
+  const db = firebase.database();
+  db.ref(`journal/${id}/${date}`)
+    .set({ rating, content, date })
+    .then((date) => {
+      console.log("resp", data);
+    });
 };
 export const getJournalsAsync = (id) => (dispatch) => {
   const db = firebase.database();

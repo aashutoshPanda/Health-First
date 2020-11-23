@@ -19,17 +19,22 @@ import {
   Button,
 } from "native-base";
 import * as Font from "expo-font";
+import { addEntryAsync } from "../store/slices/journalSlice";
+import { connect } from "react-redux";
 
-export default class AddToJournal extends Component {
+const dateFormatOption = {
+  month: "2-digit",
+  day: "2-digit",
+  year: "numeric",
+};
+const today = new Date().toLocaleDateString("en-US", dateFormatOption);
+class AddToJournal extends Component {
   state = {
     selected2: undefined,
     rating: 0,
+    textFilled: "defautl value",
   };
-  onValueChange(value) {
-    this.setState({
-      rating: value,
-    });
-  }
+
   UNSAFE_componentWillMount = async () => {
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
@@ -42,6 +47,18 @@ export default class AddToJournal extends Component {
       selected2: value,
     });
   }
+  handleAddEntry() {
+    const { id } = this.props.auth;
+    const { rating, textFilled } = this.state;
+    const date = today.replace(/_/g, "-");
+    this.props.addEntryAsync(id, rating, textFilled, date);
+  }
+  handleTextChange = (e) => {
+    // e.preventDefault();
+    console.log("filled = ", e.target.value);
+    this.setState({ textFilled: e.target.value });
+    return e.target.value;
+  };
   render() {
     if (!this.state.isReady) {
       return <ActivityIndicator />;
@@ -55,7 +72,7 @@ export default class AddToJournal extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>21 November 2020</Title>
+            <Title>{today}</Title>
           </Body>
           <Right />
         </Header>
@@ -79,12 +96,18 @@ export default class AddToJournal extends Component {
                 <Picker.Item label="Awesome" value="5" />
               </Picker>
             </Item>
-            <Textarea rowSpan={9} bordered placeholder="Textarea" />
+            <Textarea
+              rowSpan={9}
+              bordered
+              placeholder="Textarea"
+              value={this.state.textFilled}
+              onChange={this.handleTextChange}
+            />
           </Form>
         </Content>
         <Footer>
           <FooterTab>
-            <Button full>
+            <Button onPress={() => this.handleAddEntry()} full>
               <Text>ADD TODAY'S STORY</Text>
             </Button>
           </FooterTab>
@@ -93,3 +116,9 @@ export default class AddToJournal extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  const { auth, journal } = state;
+  return { auth, journal };
+};
+
+export default connect(mapStateToProps, { addEntryAsync })(AddToJournal);
