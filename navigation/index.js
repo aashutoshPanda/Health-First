@@ -28,6 +28,7 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
+    Camera,
     Login,
     SignUp,
     Welcome,
@@ -36,7 +37,6 @@ const screens = createStackNavigator(
     Camera,
     AddToJournal,
     Journal,
-    Camera,
     Settings,
     Waterlevel,
     Forgot,
