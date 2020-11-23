@@ -10,37 +10,49 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Thumbnail ,Button,Icon} from "native-base";
+import { Thumbnail, Button, Icon } from "native-base";
 import { Constants } from "expo";
 import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
 import { mocks } from "../constants";
-import { selectLevel, incrementAsync } from "../store/slices/cameraSlice";
-export default class CameraExample extends Component {
-  state = {
-    image: null,
-    uploading: false,
-  };
-
+import { connect } from "react-redux";
+import {
+  setImageTaken,
+  setImagePath,
+  setLoading,
+  setResult,
+  setShowUploadButtons,
+  reset,
+  setError,
+} from "../store/slices/cameraSlice";
+class Camera extends Component {
   render() {
-    let { image } = this.state;
-
+    let image = this.props.camera.imagePath;
+    if (this.props.camera.loading) {
+      return (
+        <View style={[StyleSheet.absoluteFill, styles.maybeRenderUploading]}>
+          <ActivityIndicator color="#fff" size="large" />
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
-        <View style={{width:"100%"}}>
-          <Text style={{margin:20,fontWeight:"bold",fontSize:25}}>
+        <View style={{ width: "100%" }}>
+          <Text style={{ margin: 20, fontWeight: "bold", fontSize: 25 }}>
             Cataract Test
           </Text>
         </View>
-        <Image source={mocks.cataractLogo} style={styles.logo} />
+        {/* <Image source={mocks.cataractLogo} style={styles.logo} /> */}
         <StatusBar barStyle="default" />
-        <View style={{ flex: 1, justifyContent: "center" }}>
-          <Text style={styles.exampleText}>
-            Take our quick, free test to see if you’ve a Cataract or
-          </Text>
-        </View>
+        {/* <View style={{ flex: 1, justifyContent: "center" }}> */}
+        <Text style={styles.exampleText}>
+          Take our quick, free test to see if you’ve a Cataract or
+        </Text>
+        {/* </View> */}
 
-        {image === null ? this._inputButtons() : this._maybeRenderImage()}
+        {this.props.camera.showUploadButtons === true
+          ? this._inputButtons()
+          : this._maybeRenderImage()}
 
         {this._maybeRenderUploadingOverlay()}
       </View>
@@ -48,8 +60,10 @@ export default class CameraExample extends Component {
   }
   _cataractTest = () => {
     const apiUrl = "http://192.168.1.5:8080/detect";
-    const pictureuri = this.state.image;
-    this.setState({ uploading: true, image: null });
+    const pictureuri = this.props.camera.imagePath;
+
+    this.props.setLoading(true);
+    this.props.setError(false);
     console.log("making cataract request");
     var data = new FormData();
     data.append("file", {
@@ -68,13 +82,15 @@ export default class CameraExample extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ uploading: false });
-        this.setState({ image: data.img_url });
+        this.props.setImagePath(data.img_url);
+        this.props.setResult(data);
         console.log("succ from cataract ");
+        this.props.setLoading(false);
         console.log(data);
       })
       .catch((err) => {
-        this.setState({ uploading: false });
+        this.props.setLoading(false);
+        this.props.setError(true);
         console.log("err from cataract");
         console.log(err);
       });
@@ -82,31 +98,27 @@ export default class CameraExample extends Component {
   _inputButtons = () => {
     return (
       <>
-        <View style={{ flex: 1,marginBottom:-100 }}>
-          <Button
-            iconLeft
-            success
-            onPress={this._pickImage}
-          >
-            <Icon name='download'/>
-            <Text style={{color:"white",fontWeight:"bold",margin:20}}>Upload from device</Text>
-          </Button>
-        </View>
-        <View style={{ flex: 1 }}>
-          <Button
-            iconLeft
-            success
-            onPress={this._takePhoto}
-          >
-            <Icon name='camera'/>
-            <Text style={{color:"white",fontWeight:"bold",margin:20}}>Take a Picture</Text>
-          </Button>
-        </View>
+        {/* <View style={{ flex: 1, marginBottom: -100 }}> */}
+        <Button iconLeft success onPress={this._pickImage}>
+          <Icon name="download" />
+          <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
+            Upload from device
+          </Text>
+        </Button>
+        {/* </View> */}
+        {/* <View style={{ flex: 1 }}> */}
+        <Button iconLeft success onPress={this._takePhoto}>
+          <Icon name="camera" />
+          <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
+            Take a Picture
+          </Text>
+        </Button>
+        {/* </View> */}
       </>
     );
   };
   _maybeRenderUploadingOverlay = () => {
-    if (this.state.uploading) {
+    if (this.props.camera.loading) {
       return (
         <View style={[StyleSheet.absoluteFill, styles.maybeRenderUploading]}>
           <ActivityIndicator color="#fff" size="large" />
@@ -116,48 +128,69 @@ export default class CameraExample extends Component {
   };
 
   _maybeRenderImage = () => {
-    let { image } = this.state;
-
+    let image = this.props.camera.imagePath;
+    const { navigation } = this.props;
+    console.log("thjis is imahe", image);
     if (!image) {
       return;
     }
 
-    console.log(image)
-
+    console.log(image);
+    console.log("result from prosp", this.props.camera.result);
     return (
       <View style={styles.maybeRenderContainer}>
         <View style={styles.maybeRenderImageContainer}>
           <Image source={{ uri: image }} style={styles.maybeRenderImage} />
         </View>
-        {/* <View style={{ flex: 1 }}>
-          <Button
-            style={styles.container}
-            onPress={() => this.setState({ image: null })}
-            title="RETAKE"
-          />
-        </View>
-         */}
-        <View>
-          <Button
-            style={styles.container}
-            onPress={this._cataractTest}
-            title="Test It"
-          />
-        </View>
+        {/* <View style={{ flex: 1 }}> */}
+        <Button style={styles.container} onPress={() => this.props.reset()}>
+          <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
+            RETAKE
+          </Text>
+        </Button>
+        {/* </View> */}
+        {this.props.camera.result === null ? (
+          <View>
+            <Button style={styles.container} onPress={this._cataractTest}>
+              <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
+                TEST
+              </Text>
+            </Button>
+          </View>
+        ) : (
+          <View>
+            <Button
+              style={styles.container}
+              onPress={() => navigation.navigate("Appointment")}
+            >
+              <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
+                MAKE APPOINTMENT
+              </Text>
+            </Button>
+            <Text style={{ fontWeight: "bold", margin: 20 }}>
+              CATARACT FOUND : {this.props.camera.result.found}
+            </Text>
+          </View>
+        )}
+        {this.props.camera.error === true ? (
+          <Text style={{ fontWeight: "bold", margin: 20 }}>
+            Erorr while making request
+          </Text>
+        ) : null}
       </View>
     );
   };
 
   _share = () => {
     Share.share({
-      message: this.state.image,
+      message: this.props.camera.imagePath,
       title: "Check out this photo",
-      url: this.state.image,
+      url: this.props.camera.imagePath,
     });
   };
 
   _copyToClipboard = () => {
-    Clipboard.setString(this.state.image);
+    Clipboard.setString(this.props.camera.imagePath);
     alert("Copied image URL to clipboard");
   };
 
@@ -178,7 +211,9 @@ export default class CameraExample extends Component {
       });
 
       if (!pickerResult.cancelled) {
-        this.setState({ image: pickerResult.uri });
+        this.props.setImagePath(pickerResult.uri);
+        this.props.setShowUploadButtons(false);
+        this.props.setImageTaken(true);
       }
     }
   };
@@ -197,7 +232,9 @@ export default class CameraExample extends Component {
       });
 
       if (!pickerResult.cancelled) {
-        this.setState({ image: pickerResult.uri });
+        this.props.setImagePath(pickerResult.uri);
+        this.props.setShowUploadButtons(false);
+        this.props.setImageTaken(true);
       }
 
       this.uploadImageAsync(pickerResult.uri);
@@ -207,9 +244,9 @@ export default class CameraExample extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    flex: 1,
-    justifyContent: "center",
+    // alignItems: "center",
+    // flex: 1,
+    // justifyContent: "center",
   },
   exampleText: {
     fontSize: 20,
@@ -254,3 +291,17 @@ const styles = StyleSheet.create({
     borderRadius: 200 / 2,
   },
 });
+const mapStateToProps = (state) => {
+  const { auth, camera } = state;
+  return { auth, camera };
+};
+
+export default connect(mapStateToProps, {
+  setImageTaken,
+  setImagePath,
+  setLoading,
+  setResult,
+  setShowUploadButtons,
+  reset,
+  setError,
+})(Camera);
