@@ -28,9 +28,9 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
-    
     Welcome,
     Dietplan,
+    Browse,
     AddToJournal,
     Journal,
     Waterlevel,
@@ -38,7 +38,6 @@ const screens = createStackNavigator(
     Login,
     SignUp,
     Forgot,
-    Browse,
     Explore,
     Appointment,
     Chat,
