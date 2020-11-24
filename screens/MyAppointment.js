@@ -3,7 +3,7 @@ import { StyleSheet ,View,ScrollView,ActivityIndicator} from "react-native";
 
 import { Button, Block} from "../components";
 import { theme, mocks } from "../constants";
-import { List, ListItem, Left, Right, Icon,Text } from "native-base";
+import { List, ListItem, Left, Right, Icon,Text, Body } from "native-base";
 
 import {
   getMyAppointmentsAsync,
@@ -35,35 +35,36 @@ export default function Appointment(props) {
   console.log("my appointments to show = ", appointments);
 
   return (
-    <Block
-      style={{ marginTop: 10, marginBottom: 0 }}
-      padding={[0, theme.sizes.base * 2]}
-    >
-      <Text style={{fontWeight:"bold",fontSize:18,margin:18}}>
+    <View style={{width:"100%",alignItems:"center"}}>
+      <Text style={{fontWeight:"bold",fontSize:18,textAlign:"center",marginBottom:15,marginTop:15}}>
         My Apointments
       </Text>
 
-      <ScrollView>
-        {mocks.recordData.map((item)=>{
+      <View style={{width:"90%"}}>
+        {appointments.map((item)=>{
 
           return(
-            <View>
+            <View key={item.withId}>
                 <List>
                   <ListItem selected>
-                    <Left>
-                      <Text>{item.withName}</Text>
-                    </Left>
+                    <Body>
+                      <Text style={{fontWeight:"bold",fontStyle:"italic"}}>{item.withName}</Text>
+                      <Text note>{item.address}</Text>
+                      <Text style={{fontWeight:"bold"}} note>Service: {item.service}</Text>
+                      <Text style={{fontStyle:"italic"}} note>Price: {item.price} Rs</Text>
+                      <Text note> Date :{item.date}</Text>
+                    </Body>
                     <Right>
-                      <Text note>3:43 pm</Text>
+                      <Text note>{item.time}</Text>
                     </Right>
                   </ListItem>
                 </List>
             </View>
           )
         })}
-      </ScrollView>
+      </View>
 
-    </Block>
+    </View>
   );
 }
 
