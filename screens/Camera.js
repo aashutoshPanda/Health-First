@@ -45,9 +45,16 @@ class Camera extends Component {
         {/* <Image source={mocks.cataractLogo} style={styles.logo} /> */}
         <StatusBar barStyle="default" />
         {/* <View style={{ flex: 1, justifyContent: "center" }}> */}
-        <Text style={styles.exampleText}>
-          Take our quick, free test to see if you’ve a Cataract or
+
+        <Text style={{marginTop:10,marginLeft:20,marginRight:20,fontSize:16}}>
+         Have your eye checked for cataract in a very <Text style={{fontWeight:"bold",fontStyle:"italic"}}>quick</Text>, <Text style={{fontWeight:"bold",fontStyle:"italic"}}>efficient</Text> and <Text style={{fontWeight:"bold",fontStyle:"italic"}}>convenient</Text> manner with our <Text style={{fontWeight:"bold",fontStyle:"italic",color:"green"}}>Cataract Scanner</Text>, before you consult a doctor .
         </Text>
+
+
+
+        {/* <Text style={styles.exampleText}>
+          "Have your eye checked for cataract in a very quick,efficient and convenient manner before you consult a doctor."
+        </Text> */}
         {/* </View> */}
 
         {this.props.camera.showUploadButtons === true
@@ -99,20 +106,26 @@ class Camera extends Component {
     return (
       <>
         {/* <View style={{ flex: 1, marginBottom: -100 }}> */}
-        <Button iconLeft success onPress={this._pickImage}>
-          <Icon name="download" />
-          <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
-            Upload from device
-          </Text>
-        </Button>
-        {/* </View> */}
-        {/* <View style={{ flex: 1 }}> */}
-        <Button iconLeft success onPress={this._takePhoto}>
-          <Icon name="camera" />
-          <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
-            Take a Picture
-          </Text>
-        </Button>
+        <View style={{margin:25,alignItems:"center"}}>
+          <Image style={{width:250,height:250}} source={require("../assets/images/iris-recognition.png")}/>
+          <Text style={{margin:10,fontStyle:"italic",fontWeight:"bold"}}>(Your image will appear here)</Text>
+        </View>
+        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}>
+          <Button style={{margin:10}} iconLeft danger onPress={this._pickImage}>
+            <Icon name="document" />
+            <Text style={{ color: "white", fontWeight: "bold", margin: 10 }}>
+              Upload from device
+            </Text>
+          </Button>
+          {/* </View> */}
+          {/* <View style={{ flex: 1 }}> */}
+          <Button style={{margin:10}} iconLeft info onPress={this._takePhoto}>
+            <Icon name="camera" />
+            <Text style={{ color: "white", fontWeight: "bold", margin: 10 }}>
+              Take a Picture
+            </Text>
+          </Button>
+        </View>
         {/* </View> */}
       </>
     );
@@ -138,12 +151,24 @@ class Camera extends Component {
     console.log(image);
     console.log("result from prosp", this.props.camera.result);
     return (
-      <View style={styles.maybeRenderContainer}>
-        <View style={styles.maybeRenderImageContainer}>
-          <Image source={{ uri: image }} style={styles.maybeRenderImage} />
+      <>
+        <View style={{margin:25,alignItems:"center"}}>
+          <Image
+           style={{
+             width:250,
+             height:250,
+             borderWidth:4,
+             borderRadius:5,
+             borderColor:"green"
+          }} 
+           source={{ uri: image }}/>
+          <Text style={{margin:10,fontStyle:"italic",fontWeight:"bold"}}>(This is the image received.)</Text>
         </View>
         {/* <View style={{ flex: 1 }}> */}
-        <Button style={styles.container} onPress={() => this.props.reset()}>
+        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}>
+
+        <Button danger iconLeft style={{margin:10}} onPress={() => this.props.reset()}>
+          <Icon name="refresh" />
           <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
             RETAKE
           </Text>
@@ -151,7 +176,8 @@ class Camera extends Component {
         {/* </View> */}
         {this.props.camera.result === null ? (
           <View>
-            <Button style={styles.container} onPress={this._cataractTest}>
+            <Button success style={{margin:10}} iconLeft onPress={this._cataractTest}>
+              <Icon name="eye" />
               <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
                 TEST
               </Text>
@@ -177,7 +203,8 @@ class Camera extends Component {
             Erorr while making request
           </Text>
         ) : null}
-      </View>
+        </View>
+      </>
     );
   };
 
