@@ -25,15 +25,15 @@ export const diet = [
         {
           value: 400,
           label: 'Carbohydrates',
-          color: '#8a817c',
+          color: '#36F1CD',
         }, {
           value: 500,
           label: 'Protein',
-          color: '#fb5607'
+          color: '#13C4A3'
         }, {
           value: 700,
           label: 'Vitamins',
-          color: '#80b918'
+          color: '#32322C'
         }
     
       ]
@@ -44,15 +44,15 @@ export const diet = [
         {
           value: 300,
           label: 'Carbohydrates',
-          color: '#008000',
+          color: '#F6F930',
         }, {
           value: 600,
           label: 'Protein',
-          color: '#bd1f36'
+          color: '#2F2F2F'
         }, {
           value: 500,
           label: 'Vitamins',
-          color: '#ccc5b9'
+          color: '#000000'
         }
     
       ]
@@ -65,15 +65,15 @@ export const diet = [
         {
           value: 60,
           label: 'Carbohydrates',
-          color: '#034078',
+          color: '#EEE82C',
         }, {
           value: 30,
           label: 'Protein',
-          color: '#e71d36'
+          color: '#91CB3E'
         }, {
           value: 65,
           label: 'Calcium',
-          color: '#c8553d'
+          color: '#53A548'
         }
     
       ]
@@ -143,15 +143,15 @@ export const diet = [
         {
           value: 400,
           label: 'Carbohydrates',
-          color: '#8a817c',
+          color: '#36F1CD',
         }, {
           value: 500,
           label: 'Protein',
-          color: '#fb5607'
+          color: '#13C4A3'
         }, {
           value: 700,
           label: 'Vitamins',
-          color: '#80b918'
+          color: '#32322C'
         }
     
       ]
@@ -162,15 +162,15 @@ export const diet = [
         {
           value: 300,
           label: 'Carbohydrates',
-          color: '#008000',
+          color: '#F6F930',
         }, {
           value: 600,
           label: 'Protein',
-          color: '#bd1f36'
+          color: '#2F2F2F'
         }, {
           value: 500,
           label: 'Vitamins',
-          color: '#ccc5b9'
+          color: '#000000'
         }
     
       ]
@@ -183,15 +183,15 @@ export const diet = [
         {
           value: 60,
           label: 'Carbohydrates',
-          color: '#034078',
+          color: '#EEE82C',
         }, {
           value: 30,
           label: 'Protein',
-          color: '#e71d36'
+          color: '#91CB3E'
         }, {
           value: 65,
           label: 'Calcium',
-          color: '#c8553d'
+          color: '#53A548'
         }
     
       ]
@@ -261,15 +261,15 @@ export const diet = [
         {
           value: 400,
           label: 'Carbohydrates',
-          color: '#8a817c',
+          color: '#36F1CD',
         }, {
           value: 500,
           label: 'Protein',
-          color: '#fb5607'
+          color: '#13C4A3'
         }, {
           value: 700,
           label: 'Vitamins',
-          color: '#80b918'
+          color: '#32322C'
         }
     
       ]
@@ -280,15 +280,15 @@ export const diet = [
         {
           value: 300,
           label: 'Carbohydrates',
-          color: '#008000',
+          color: '#F6F930',
         }, {
           value: 600,
           label: 'Protein',
-          color: '#bd1f36'
+          color: '#2F2F2F'
         }, {
           value: 500,
           label: 'Vitamins',
-          color: '#ccc5b9'
+          color: '#000000'
         }
     
       ]
@@ -301,15 +301,15 @@ export const diet = [
         {
           value: 60,
           label: 'Carbohydrates',
-          color: '#034078',
+          color: '#EEE82C',
         }, {
           value: 30,
           label: 'Protein',
-          color: '#e71d36'
+          color: '#91CB3E'
         }, {
           value: 65,
           label: 'Calcium',
-          color: '#c8553d'
+          color: '#53A548'
         }
     
       ]
@@ -379,15 +379,15 @@ export const diet = [
         {
           value: 400,
           label: 'Carbohydrates',
-          color: '#8a817c',
+          color: '#36F1CD',
         }, {
           value: 500,
           label: 'Protein',
-          color: '#fb5607'
+          color: '#13C4A3'
         }, {
           value: 700,
           label: 'Vitamins',
-          color: '#80b918'
+          color: '#32322C'
         }
     
       ]
@@ -398,15 +398,15 @@ export const diet = [
         {
           value: 300,
           label: 'Carbohydrates',
-          color: '#008000',
+          color: '#F6F930',
         }, {
           value: 600,
           label: 'Protein',
-          color: '#bd1f36'
+          color: '#2F2F2F'
         }, {
           value: 500,
           label: 'Vitamins',
-          color: '#ccc5b9'
+          color: '#000000'
         }
     
       ]
