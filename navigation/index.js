@@ -29,9 +29,7 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
-    MyAppointment,
     Welcome,
-
     Explore,
     Camera,
     Login,
@@ -46,6 +44,7 @@ const screens = createStackNavigator(
     Appointment,
     Chat,
     Product,
+    MyAppointment,
   },
   {
     defaultNavigationOptions: {
