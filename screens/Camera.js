@@ -187,7 +187,7 @@ class Camera extends Component {
           <View>
             <Button
               style={styles.container}
-              onPress={() => navigation.navigate("Appointment")}
+              onPress={() => navigation.navigate("Explore")}
             >
               <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
                 MAKE APPOINTMENT

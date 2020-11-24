@@ -12,6 +12,7 @@ import Browse from "../screens/Browse";
 import Product from "../screens/Product";
 import Settings from "../screens/Settings";
 import Appointment from "../screens/Appointment";
+import MyAppointment from "../screens/MyAppointment";
 import Dietplan from "../screens/Dietplan";
 import Moodtracker from "../screens/Moodtracker";
 import Waterlevel from "../screens/Waterlevel";
@@ -39,7 +40,6 @@ const screens = createStackNavigator(
     Settings,
     Waterlevel,
     Forgot,
-    Explore,
     Appointment,
     Chat,
     Product,
