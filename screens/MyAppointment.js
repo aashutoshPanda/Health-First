@@ -20,8 +20,9 @@ export default function Appointment(props) {
 
   useEffect(() => {
     const getAppointments = async () => {
-      console.log("useeffect");
-      dispatch(getMyAppointmentsAsync(id));
+      // console.log("useeffect");
+
+      dispatch(getMyAppointmentsAsync());
     };
     getAppointments();
   }, []);

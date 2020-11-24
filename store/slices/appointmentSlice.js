@@ -26,7 +26,7 @@ export const appointmentSlice = createSlice({
       state.searchQuery = action.payload;
     },
     setMyAppointments: (state, action) => {
-      state.myAppointments.push(action.payload);
+      state.myAppointments = action.payload;
     },
     setSearchData: (state, action) => {
       state.searchData = action.payload;
@@ -80,11 +80,17 @@ export const makeAppointmentAsync = (data) => (dispatch) => {
   db.ref(`appointment/${uid}/`).push(data);
   dispatch(addToMyAppointments());
 };
-export const getMyAppointmentsAsync = (id) => (dispatch) => {
+export const getMyAppointmentsAsync = () => (dispatch) => {
   dispatch(setLoading(true));
+  const id = firebase.auth().currentUser && firebase.auth().currentUser.uid;
   const db = firebase.database();
   db.ref(`appointment/${id}/`).once("value", (snapshot) => {
-    // dispatch(setMyAppointments(snapshot.val()));
+    // console.log("snap value : ", snapshot.val());
+    const myAppointments = [];
+    for (const [key, value] of Object.entries(snapshot.val())) {
+      myAppointments.push(snapshot.val()[key]);
+    }
+    dispatch(setMyAppointments(myAppointments));
     dispatch(setLoading(false));
   });
 };
