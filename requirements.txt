@@ -2,3 +2,4 @@ gunicorn
 Flask
 opencv-python
 cloudinary
+Augmentor

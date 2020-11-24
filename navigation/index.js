@@ -28,8 +28,7 @@ import { Button, Block, Text } from "../components/index";
 import { View } from "react-native";
 
 const screens = createStackNavigator(
-  { 
-    
+  {
     Welcome,
     MyAppointment,
     Dietplan,
@@ -46,6 +45,7 @@ const screens = createStackNavigator(
     Appointment,
     Chat,
     Product,
+    MyAppointment,
   },
   {
     defaultNavigationOptions: {

@@ -25,6 +25,8 @@ import {
   reset,
   setError,
 } from "../store/slices/cameraSlice";
+import { setSearchQuery } from "../store/slices/appointmentSlice";
+
 class Camera extends Component {
   render() {
     let image = this.props.camera.imagePath;
@@ -177,7 +179,11 @@ class Camera extends Component {
       );
     }
   };
-
+  handleAppointment = () => {
+    console.log("psuhed");
+    this.props.setSearchQuery("cataract");
+    this.props.navigation.navigate("Explore");
+  };
   _maybeRenderImage = () => {
     let image = this.props.camera.imagePath;
     const { navigation } = this.props;
@@ -241,7 +247,7 @@ class Camera extends Component {
             <View>
               <Button
                 style={styles.container}
-                onPress={() => navigation.navigate("Explore")}
+                onPress={() => this.handleAppointment()}
               >
                 <Text
                   style={{ color: "white", fontWeight: "bold", margin: 20 }}
@@ -387,4 +393,5 @@ export default connect(mapStateToProps, {
   setShowUploadButtons,
   reset,
   setError,
+  setSearchQuery,
 })(Camera);
