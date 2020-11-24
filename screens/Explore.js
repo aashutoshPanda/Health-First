@@ -83,9 +83,7 @@ class Explore extends Component {
   }
 
   renderFooter() {
-    return (
-      <View></View>
-    );
+    return <View></View>;
   }
   handleMakeAppointment(withName, withId, address, tags) {
     const tagsArray = [];
@@ -160,11 +158,11 @@ class Explore extends Component {
             </LinearGradient>
           </Left>
 
-          <Right>
+          {/* <Right>
             <Text h2 bold>
               100$<Text>&nbsp;(Approx)</Text>
             </Text>
-          </Right>
+          </Right> */}
         </CardItem>
       </Card>
     ));

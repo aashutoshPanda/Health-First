@@ -61,7 +61,7 @@ const screens = createStackNavigator(
         </View>
       ),
       headerStyle: {
-        marginTop: -30,
+        marginTop: 0,
         borderBottomColor: "transparent",
         elevation: 1,
       },
