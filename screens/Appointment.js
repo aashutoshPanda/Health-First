@@ -14,28 +14,60 @@ import {
 import { connect } from "react-redux";
 import * as IconTemp from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { DatePicker } from "native-base";
+
+import DatePicker from "react-native-datepicker";
 import { Button, Block, Input, Text } from "../components";
 import { theme, mocks } from "../constants";
-import { View } from "native-base";
+import { View, Picker, Item } from "native-base";
 
 import {
   getSearchDataAsync,
   setAppointment,
   setLoading,
   setSearchQuery,
+  setAdditionalData,
+  makeAppointmentAsync,
 } from "../store/slices/appointmentSlice";
 class Appointment extends Component {
   constructor(props) {
     super(props);
-    this.state = { chosenDate: new Date() };
+    this.state = {
+      chosenDate: new Date(),
+      datetime: "2016-05-15 00:00",
+      choice: 0,
+    };
     this.setDate = this.setDate.bind(this);
+  }
+  onSelectionChange(value) {
+    this.setState({
+      choice: value,
+    });
   }
   setDate(newDate) {
     this.setState({ chosenDate: newDate });
   }
+  handleSubmit() {
+    const date = this.state.datetime.replace(/-/g, "_").substr(0, 10);
+    const time = this.state.datetime.substr(11, 5);
+    console.log(this.state.datetime, this.state.datetime.substr(11, 5));
+    const { service, price } = this.props.appointment.servicePrice[
+      this.state.choice
+    ];
+    const { address, withId, withName } = this.props.appointment.selectedData;
+    this.props.makeAppointmentAsync({
+      date,
+      time,
+      service,
+      price,
+      address,
+      withId,
+      withName,
+    });
+    this.props.navigation.navigate("MyAppointment");
+  }
   render() {
     const { withName, withId, address } = this.props.appointment.selectedData;
+
     return (
       <Block
         style={{ marginTop: 10, marginBottom: 0 }}
@@ -45,29 +77,62 @@ class Appointment extends Component {
           Confirm Booking
         </Text>
         <Block style={{ marginTop: 50 }} middle>
-          <Input label="Name" style={[styles.input]} />
-          <Input label="Address" style={[styles.input]} />
+          <Input label="Name" value={withName} style={[styles.input]} />
+          <Input label="Address" value={address} style={[styles.input]} />
+          {/* <Input label="Cause/Reason" value={} style={[styles.input]} /> */}
 
-          <Input label="Mobile No." style={[styles.input]} />
           <DatePicker
-            defaultDate={new Date(2020, 10, 20)}
-            minimumDate={new Date(2020, 10, 20)}
-            maximumDate={new Date(2025, 11, 31)}
-            locale={"en"}
-            timeZoneOffsetInMinutes={undefined}
-            modalTransparent={false}
-            animationType={"fade"}
-            androidMode={"default"}
-            placeHolderText="Select date"
-            textStyle={{ color: "green" }}
-            placeHolderTextStyle={{ color: "#d3d3d3" }}
-            onDateChange={this.setDate}
-            disabled={false}
+            style={{ width: 200 }}
+            date={this.state.datetime}
+            mode="datetime"
+            placeholder="select date"
+            format="YYYY-MM-DD HH:mm"
+            minDate="2020-11-24"
+            maxDate="2020-12-24"
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={{
+              dateIcon: {
+                position: "absolute",
+                left: 0,
+                top: 4,
+                marginLeft: 0,
+              },
+              dateInput: {
+                marginLeft: 36,
+              },
+              // ... You can check the source to find the other keys.
+            }}
+            onDateChange={(datetime) => {
+              this.setState({ datetime });
+            }}
           />
+
           <Text style={{ margin: 10 }} h3>
             Date: {this.state.chosenDate.toString().substr(4, 12)}
           </Text>
-          <Button gradient onPress={() => this.handleLogin()}>
+
+          <Item picker>
+            <Picker
+              mode="dropdown"
+              style={{ width: 250 }}
+              placeholder="Select A Mood ?"
+              placeholderStyle={{ color: "#bfc6ea" }}
+              placeholderIconColor="#007aff"
+              selectedValue={this.state.choice}
+              onValueChange={this.onSelectionChange.bind(this)}
+            >
+              {this.props.appointment.servicePrice.map((ele, index) => {
+                return (
+                  <Picker.Item
+                    label={`${ele.service} : Rs. ${ele.price}`}
+                    value={index}
+                  />
+                );
+              })}
+            </Picker>
+          </Item>
+          <Button gradient onPress={() => this.handleSubmit()}>
             <Text bold white center>
               Confirm (100$)
             </Text>
@@ -107,4 +172,6 @@ export default connect(mapStateToProps, {
   setAppointment,
   setLoading,
   setSearchQuery,
+  setAdditionalData,
+  makeAppointmentAsync,
 })(Appointment);

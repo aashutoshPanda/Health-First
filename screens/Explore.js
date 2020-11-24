@@ -32,6 +32,7 @@ import {
   setAppointment,
   setLoading,
   setSearchQuery,
+  setServicePrice,
 } from "../store/slices/appointmentSlice";
 
 class Explore extends Component {
@@ -96,11 +97,19 @@ class Explore extends Component {
       </LinearGradient>
     );
   }
-  handleMakeAppointment(withName, withId, address) {
+  handleMakeAppointment(withName, withId, address, tags) {
+    const tagsArray = [];
+    for (const [key, value] of Object.entries(tags)) {
+      tagsArray.push(tags[key]);
+    }
+    this.props.setServicePrice(tagsArray);
     this.props.setAppointment({ withName, withId, address });
     this.props.navigation.navigate("Appointment");
   }
   render() {
+    if (this.props.appointment.loading) {
+      return <ActivityIndicator />;
+    }
     const { searchQuery } = this.props.appointment;
     const searchData = this.props.appointment.searchData;
     const items = searchData.filter((item) => {
@@ -119,7 +128,7 @@ class Explore extends Component {
     });
     console.log("search data", items);
     let hospitalList = items.map((item) => (
-      <Card key={item.id}>
+      <Card key={item.withId}>
         <CardItem>
           <Left>
             {/* <Thumbnail source={item.thumbnail} /> */}
@@ -144,7 +153,12 @@ class Explore extends Component {
             >
               <Button
                 onPress={() =>
-                  this.handleMakeAppointment(item.name, item.id, item.address)
+                  this.handleMakeAppointment(
+                    item.name,
+                    item.withId,
+                    item.address,
+                    item.tags
+                  )
                 }
                 gradient
                 style={{ width: width / 2.8 }}
@@ -253,4 +267,5 @@ export default connect(mapStateToProps, {
   setAppointment,
   setLoading,
   setSearchQuery,
+  setServicePrice,
 })(Explore);

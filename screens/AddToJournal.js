@@ -30,8 +30,7 @@ const dateFormatOption = {
 const today = new Date().toLocaleDateString("en-US", dateFormatOption);
 class AddToJournal extends Component {
   state = {
-    selected2: undefined,
-    rating: 0,
+    rating: "1",
     textFilled: "",
   };
 
@@ -42,9 +41,9 @@ class AddToJournal extends Component {
     });
     this.setState({ isReady: true });
   };
-  onValueChange2(value: string) {
+  onSelectionChange(value) {
     this.setState({
-      selected2: value,
+      rating: value,
     });
   }
   handleAddEntry() {
@@ -88,8 +87,8 @@ class AddToJournal extends Component {
                 placeholder="Select A Mood ?"
                 placeholderStyle={{ color: "#bfc6ea" }}
                 placeholderIconColor="#007aff"
-                selectedValue={this.state.selected2}
-                onValueChange={this.onValueChange2.bind(this)}
+                selectedValue={this.state.rating}
+                onValueChange={this.onSelectionChange.bind(this)}
               >
                 <Picker.Item label="Very Sad" value="1" />
                 <Picker.Item label="Sad" value="2" />

@@ -12,12 +12,16 @@ export const appointmentSlice = createSlice({
       withId: "",
       withName: "",
       date: "",
-      reason: "",
+      service: "",
       time: "",
       price: "",
     },
+    servicePrice: [],
   },
   reducers: {
+    addToMyAppointments: (state, action) => {
+      state.myAppointments.push(action.payload);
+    },
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
     },
@@ -36,17 +40,20 @@ export const appointmentSlice = createSlice({
       state.selectedData.address = action.payload.address;
     },
     setAdditionalData: (state, action) => {
-      state.selectedData.reason = action.payload.reason;
+      state.selectedData.service = action.payload.service;
       state.selectedData.time = action.payload.time;
       state.selectedData.price = action.payload.price;
       state.selectedData.date = action.payload.date;
+    },
+    setServicePrice: (state, action) => {
+      state.servicePrice = action.payload;
     },
     reset: (state, action) => {
       state.selectedData.address = "";
       state.selectedData.withName = "";
       state.selectedData.withId = "";
       state.selectedData.date = "";
-      state.selectedData.reason = "";
+      state.selectedData.service = "";
       state.selectedData.time = "";
       state.selectedData.price = "";
     },
@@ -61,13 +68,26 @@ export const {
   reset,
   setSearchQuery,
   setSearchData,
+  setServicePrice,
+  addToMyAppointments,
 } = appointmentSlice.actions;
 
+export const makeAppointmentAsync = (data) => (dispatch) => {
+  // console.log("data for new appointment", data);
+  dispatch(setLoading(true));
+  const uid = firebase.auth().currentUser && firebase.auth().currentUser.uid;
+  const db = firebase.database();
+  db.ref(`appointment/${uid}/`).push(data);
+  dispatch(addToMyAppointments());
+};
 export const getMyAppointmentsAsync = (id) => (dispatch) => {
   dispatch(setLoading(true));
   const db = firebase.database();
-  db.ref(`appointment/${id}/`).on("value", (snapshot) => {
-    dispatch(setMyAppointments(snapshot.val()));
+  db.ref(`appointment/${id}/`).once("value", (snapshot) => {
+    console.log("snapshot val = ", JSON.stringify(snapshot.val()));
+    const d = snapshot.val();
+    console.log(d[id]);
+    dispatch(setMyAppointments(snapshot.val()[id]));
     dispatch(setLoading(false));
   });
 };
