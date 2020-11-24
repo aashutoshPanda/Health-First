@@ -13,7 +13,7 @@ export const journalSlice = createSlice({
       state.journals = action.payload;
     },
     setEntry: (state, action) => {
-      state.journals[action.payload.date] = action.payload.journal;
+      state.journals[action.payload.date] = action.payload.journalData;
     },
     setShouldNavigate: (state, action) => {
       console.log("changed to ", action.payload);
@@ -44,9 +44,8 @@ export const addEntryAsync = (id, rating, content, date) => (dispatch) => {
   db.ref(`journal/${id}/${date}`)
     .set({ rating, content })
     .then((data) => {
-      // console.log("resp", data);
-      const newDate = date.replace(/_/g, "/");
-      dispatch(setEntry({ date: newDate, journal: { content, rating } }));
+      // data of dispatch is like this to set in the reducer
+      dispatch(setEntry({ date, journalData: { content, rating } }));
       dispatch(setShouldNavigate(true));
     });
 };
