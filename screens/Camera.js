@@ -46,11 +46,32 @@ class Camera extends Component {
         <StatusBar barStyle="default" />
         {/* <View style={{ flex: 1, justifyContent: "center" }}> */}
 
-        <Text style={{marginTop:10,marginLeft:20,marginRight:20,fontSize:16}}>
-         Have your eye checked for cataract in a very <Text style={{fontWeight:"bold",fontStyle:"italic"}}>quick</Text>, <Text style={{fontWeight:"bold",fontStyle:"italic"}}>efficient</Text> and <Text style={{fontWeight:"bold",fontStyle:"italic"}}>convenient</Text> manner with our <Text style={{fontWeight:"bold",fontStyle:"italic",color:"green"}}>Cataract Scanner</Text>, before you consult a doctor .
+        <Text
+          style={{
+            marginTop: 10,
+            marginLeft: 20,
+            marginRight: 20,
+            fontSize: 16,
+          }}
+        >
+          Have your eye checked for cataract in a very{" "}
+          <Text style={{ fontWeight: "bold", fontStyle: "italic" }}>quick</Text>
+          ,{" "}
+          <Text style={{ fontWeight: "bold", fontStyle: "italic" }}>
+            efficient
+          </Text>{" "}
+          and{" "}
+          <Text style={{ fontWeight: "bold", fontStyle: "italic" }}>
+            convenient
+          </Text>{" "}
+          manner with our{" "}
+          <Text
+            style={{ fontWeight: "bold", fontStyle: "italic", color: "green" }}
+          >
+            Cataract Scanner
+          </Text>
+          , before you consult a doctor .
         </Text>
-
-
 
         {/* <Text style={styles.exampleText}>
           "Have your eye checked for cataract in a very quick,efficient and convenient manner before you consult a doctor."
@@ -66,7 +87,7 @@ class Camera extends Component {
     );
   }
   _cataractTest = () => {
-    const apiUrl = "http://192.168.0.104:8080/detect";
+    const apiUrl = "http://192.168.1.5:8080/detect";
     const pictureuri = this.props.camera.imagePath;
 
     this.props.setLoading(true);
@@ -106,12 +127,24 @@ class Camera extends Component {
     return (
       <>
         {/* <View style={{ flex: 1, marginBottom: -100 }}> */}
-        <View style={{margin:25,alignItems:"center"}}>
-          <Image style={{width:250,height:250}} source={require("../assets/images/iris-recognition.png")}/>
-          <Text style={{margin:10,fontStyle:"italic",fontWeight:"bold"}}>(Your image will appear here)</Text>
+        <View style={{ margin: 25, alignItems: "center" }}>
+          <Image
+            style={{ width: 250, height: 250 }}
+            source={require("../assets/images/iris-recognition.png")}
+          />
+          <Text style={{ margin: 10, fontStyle: "italic", fontWeight: "bold" }}>
+            (Your image will appear here)
+          </Text>
         </View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}>
-          <Button style={{margin:10}} iconLeft danger onPress={this._pickImage}>
+        <View
+          style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
+        >
+          <Button
+            style={{ margin: 10 }}
+            iconLeft
+            danger
+            onPress={this._pickImage}
+          >
             <Icon name="document" />
             <Text style={{ color: "white", fontWeight: "bold", margin: 10 }}>
               Upload from device
@@ -119,7 +152,12 @@ class Camera extends Component {
           </Button>
           {/* </View> */}
           {/* <View style={{ flex: 1 }}> */}
-          <Button style={{margin:10}} iconLeft info onPress={this._takePhoto}>
+          <Button
+            style={{ margin: 10 }}
+            iconLeft
+            info
+            onPress={this._takePhoto}
+          >
             <Icon name="camera" />
             <Text style={{ color: "white", fontWeight: "bold", margin: 10 }}>
               Take a Picture
@@ -152,57 +190,75 @@ class Camera extends Component {
     console.log("result from prosp", this.props.camera.result);
     return (
       <>
-        <View style={{margin:25,alignItems:"center"}}>
+        <View style={{ margin: 25, alignItems: "center" }}>
           <Image
-           style={{
-             width:250,
-             height:250,
-             borderWidth:4,
-             borderRadius:5,
-             borderColor:"green"
-          }} 
-           source={{ uri: image }}/>
-          <Text style={{margin:10,fontStyle:"italic",fontWeight:"bold"}}>(This is the image received.)</Text>
+            style={{
+              width: 250,
+              height: 250,
+              borderWidth: 4,
+              borderRadius: 5,
+              borderColor: "green",
+            }}
+            source={{ uri: image }}
+          />
+          <Text style={{ margin: 10, fontStyle: "italic", fontWeight: "bold" }}>
+            (This is the image received.)
+          </Text>
         </View>
         {/* <View style={{ flex: 1 }}> */}
-        <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}>
-
-        <Button danger iconLeft style={{margin:10}} onPress={() => this.props.reset()}>
-          <Icon name="refresh" />
-          <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
-            RETAKE
-          </Text>
-        </Button>
-        {/* </View> */}
-        {this.props.camera.result === null ? (
-          <View>
-            <Button success style={{margin:10}} iconLeft onPress={this._cataractTest}>
-              <Icon name="eye" />
-              <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
-                TEST
-              </Text>
-            </Button>
-          </View>
-        ) : (
-          <View>
-            <Button
-              style={styles.container}
-              onPress={() => navigation.navigate("Explore")}
-            >
-              <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
-                MAKE APPOINTMENT
-              </Text>
-            </Button>
-            <Text style={{ fontWeight: "bold", margin: 20 }}>
-              CATARACT FOUND : {this.props.camera.result.found}
+        <View
+          style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
+        >
+          <Button
+            danger
+            iconLeft
+            style={{ margin: 10 }}
+            onPress={() => this.props.reset()}
+          >
+            <Icon name="refresh" />
+            <Text style={{ color: "white", fontWeight: "bold", margin: 20 }}>
+              RETAKE
             </Text>
-          </View>
-        )}
-        {this.props.camera.error === true ? (
-          <Text style={{ fontWeight: "bold", margin: 20 }}>
-            Erorr while making request
-          </Text>
-        ) : null}
+          </Button>
+          {/* </View> */}
+          {this.props.camera.result === null ? (
+            <View>
+              <Button
+                success
+                style={{ margin: 10 }}
+                iconLeft
+                onPress={this._cataractTest}
+              >
+                <Icon name="eye" />
+                <Text
+                  style={{ color: "white", fontWeight: "bold", margin: 20 }}
+                >
+                  TEST
+                </Text>
+              </Button>
+            </View>
+          ) : (
+            <View>
+              <Button
+                style={styles.container}
+                onPress={() => navigation.navigate("Explore")}
+              >
+                <Text
+                  style={{ color: "white", fontWeight: "bold", margin: 20 }}
+                >
+                  MAKE APPOINTMENT
+                </Text>
+              </Button>
+              <Text style={{ fontWeight: "bold", margin: 20 }}>
+                CATARACT FOUND : {this.props.camera.result.found}
+              </Text>
+            </View>
+          )}
+          {this.props.camera.error === true ? (
+            <Text style={{ fontWeight: "bold", margin: 20 }}>
+              Erorr while making request
+            </Text>
+          ) : null}
         </View>
       </>
     );

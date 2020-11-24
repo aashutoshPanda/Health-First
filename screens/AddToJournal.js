@@ -19,7 +19,7 @@ import {
   Button,
 } from "native-base";
 import * as Font from "expo-font";
-import { addEntryAsync } from "../store/slices/journalSlice";
+import { addEntryAsync, setShouldNavigate } from "../store/slices/journalSlice";
 import { connect } from "react-redux";
 
 const dateFormatOption = {
@@ -35,6 +35,7 @@ class AddToJournal extends Component {
   };
 
   UNSAFE_componentWillMount = async () => {
+    this.props.setShouldNavigate(false);
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -122,4 +123,6 @@ const mapStateToProps = (state) => {
   return { auth, journal };
 };
 
-export default connect(mapStateToProps, { addEntryAsync })(AddToJournal);
+export default connect(mapStateToProps, { addEntryAsync, setShouldNavigate })(
+  AddToJournal
+);
