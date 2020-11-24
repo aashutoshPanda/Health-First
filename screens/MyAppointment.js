@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet ,View,ScrollView,ActivityIndicator} from "react-native";
 
-import { Button, Block} from "../components";
+import {Block} from "../components";
 import { theme, mocks } from "../constants";
-import { List, ListItem, Left, Right, Icon,Text } from "native-base";
+import { List, ListItem, Left, Right, Icon,Text, Body,Button,Footer,FooterTab } from "native-base";
 
 import {
   getMyAppointmentsAsync,
@@ -35,26 +35,30 @@ export default function Appointment(props) {
   console.log("my appointments to show = ", appointments);
 
   return (
-    <Block
-      style={{ marginTop: 10, marginBottom: 0 }}
-      padding={[0, theme.sizes.base * 2]}
-    >
-      <Text style={{fontWeight:"bold",fontSize:18,margin:18}}>
-        My Apointments
-      </Text>
+    <View>
+      
+      <View >
+        <Text style={{fontWeight:"bold",fontSize:18,margin:20,textAlign:"center"}}>
+          My Apointments
+        </Text>
+      </View>
 
-      <ScrollView>
-        {mocks.recordData.map((item)=>{
+      <ScrollView style={{width:"100%"}}>
+        {appointments.map((item)=>{
 
           return(
-            <View>
+            <View key={item.withId}>
                 <List>
                   <ListItem selected>
-                    <Left>
-                      <Text>{item.withName}</Text>
-                    </Left>
+                    <Body>
+                      <Text style={{fontWeight:"bold",fontStyle:"italic"}}>{item.withName}</Text>
+                      <Text note>{item.address}</Text>
+                      <Text style={{fontWeight:"bold"}} note>Service: {item.service}</Text>
+                      <Text style={{fontStyle:"italic"}} note>Price: {item.price} Rs</Text>
+                      <Text note> Date :{item.date}</Text>
+                    </Body>
                     <Right>
-                      <Text note>3:43 pm</Text>
+                      <Text note>{item.time}</Text>
                     </Right>
                   </ListItem>
                 </List>
@@ -62,8 +66,10 @@ export default function Appointment(props) {
           )
         })}
       </ScrollView>
+      
+      
 
-    </Block>
+    </View>
   );
 }
 

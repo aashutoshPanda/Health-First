@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, ActivityIndicator } from "react-native";
+import { View,StyleSheet, ActivityIndicator } from "react-native";
 import { connect } from "react-redux";
 import {
   Container,
@@ -8,18 +8,16 @@ import {
   Content,
   Footer,
   FooterTab,
-  Button,
   Left,
   Right,
   Body,
   Icon,
-  Text,
   List,
   ListItem,
   Thumbnail,
 } from "native-base";
 import * as Font from "expo-font";
-
+import {Text,Button} from '../components/index'
 import { getJournalsAsync } from "../store/slices/journalSlice";
 
 class Journal extends Component {
@@ -52,14 +50,17 @@ class Journal extends Component {
       const item = (
         <ListItem thumbnail>
           <Body>
-            <Text>{date}</Text>
+            <Text style={{fontWeight:"bold"}}>{date}</Text>
             <Text note numberOfLines={1}>
-              content : {content} rating : {rating}
+              <Text style={{fontWeight:"bold",fontStyle:"italic"}}>Your Thoughts</Text> : <Text style={{color:"steelblue"}}>{content}</Text>
+            </Text>
+            <Text note numberOfLines={1}>
+            <Text style={{fontWeight:"bold",fontStyle:"italic"}}>Rate your Day</Text> : <Text style={{color:"red"}}>{rating}</Text>
             </Text>
           </Body>
           <Right>
             <Button transparent>
-              <Text>View</Text>
+              <Text style={{fontWeight:"bold"}}>View</Text>
             </Button>
           </Right>
         </ListItem>
@@ -67,33 +68,36 @@ class Journal extends Component {
       items.push(item);
     }
     return (
-      <Container>
-        <Header>
-          <Left>
-            <Button transparent>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Journal</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
+      <View>
+
+        <View style={{width:"100%"}}>
+          <Text style={{margin:40}} h1 bold>
+            Journal
+          </Text>
+        </View>
+
+        <View style={{margin:10}}>
           {this.props.journal.loading ? (
             <ActivityIndicator />
           ) : (
             <List>{items.map((item) => item)}</List>
           )}
-        </Content>
-        <Footer>
+        </View>
+
+        <Button style={{margin:20}} gradient onPress={() => navigation.navigate("AddToJournal")}>
+            <Text bold white center>
+              Share your Day!
+            </Text>
+          </Button>
+
+        {/* <Footer>
           <FooterTab>
             <Button onPress={() => navigation.navigate("AddToJournal")} full>
               <Text>ADD TODAY'S STORY</Text>
             </Button>
           </FooterTab>
-        </Footer>
-      </Container>
+        </Footer> */}
+      </View>
     );
   }
 }

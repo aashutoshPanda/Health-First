@@ -30,6 +30,7 @@ import { View } from "react-native";
 const screens = createStackNavigator(
   {
     Welcome,
+    MyAppointment,
     Explore,
     Camera,
     Login,
@@ -60,7 +61,7 @@ const screens = createStackNavigator(
         </View>
       ),
       headerStyle: {
-        marginTop: 0,
+        marginTop: -30,
         borderBottomColor: "transparent",
         elevation: 1,
       },
