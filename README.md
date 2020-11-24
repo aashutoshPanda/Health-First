@@ -1,5 +1,7 @@
 # HEATHFIRST by Team Ode to Code
 
+### Official submission for Optum Stratethon - Season 2
+
 ### Software prerequisites
 
 Install the below tools/packages
