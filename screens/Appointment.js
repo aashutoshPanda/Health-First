@@ -18,7 +18,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import DatePicker from "react-native-datepicker";
 import { Button, Block, Input, Text } from "../components";
 import { theme, mocks } from "../constants";
-import { View, Picker, Item } from "native-base";
+import { View, Picker, Item ,Container, Header, Content, Card, CardItem, Body} from "native-base";
 
 import {
   getSearchDataAsync,
@@ -73,13 +73,89 @@ class Appointment extends Component {
         style={{ marginTop: 10, marginBottom: 0 }}
         padding={[0, theme.sizes.base * 2]}
       >
-        <Text center h1 bold>
+        <Text style={{marginTop:30}} center h1 bold>
           Confirm Booking
         </Text>
-        <Block style={{ marginTop: 50 }} middle>
+
+        <Card style={{marginTop:50}}>
+            <CardItem header bordered>
+              <Text style={{fontStyle:"italic",color:"green"}} h2 bold>Your Invoice :</Text>
+            </CardItem>
+            <CardItem bordered>
+              <Body>
+                <Text style={{margin:7,fontStyle:"italic",fontSize:18}} bold>Name: &nbsp;<Text style={{fontStyle:"bold",fontSize:18,color:"steelblue"}}>{withName}</Text> </Text>
+                <Text style={{margin:7,fontStyle:"italic",fontSize:18}} bold>Address: &nbsp;<Text style={{fontStyle:"bold",fontSize:18,color:"steelblue"}}>{address}</Text> </Text>
+
+                <Text style={{margin:7,fontStyle:"italic",fontSize:18}} bold>Date: &nbsp;<Text style={{fontStyle:"bold",fontSize:18,color:"steelblue"}}>{this.state.chosenDate.toString().substr(4, 12)}</Text> </Text>
+
+                <DatePicker
+                  style={{ width: 200 }}
+                  date={this.state.datetime}
+                  mode="datetime"
+                  placeholder="select date"
+                  format="YYYY-MM-DD HH:mm"
+                  minDate="2020-11-24"
+                  maxDate="2020-12-24"
+                  confirmBtnText="Confirm"
+                  cancelBtnText="Cancel"
+                  customStyles={{
+                    dateIcon: {
+                      position: "absolute",
+                      left: 0,
+                      top: 4,
+                      marginLeft: 0,
+                    },
+                    dateInput: {
+                      marginLeft: 36,
+                    },
+                    
+                  }}
+                  onDateChange={(datetime) => {
+                    this.setState({ datetime });
+                  }}
+                />
+
+                
+                
+                <Text style={{margin:7,fontStyle:"italic",fontSize:18}} bold>Service Requested:</Text>
+                <Item picker>
+                  <Picker
+                    mode="dropdown"
+                    style={{ width: 200,color:"steelblue",fontWeight:"bold" }}
+                    placeholder="Select A Mood ?"
+                    placeholderStyle={{ color: "#bfc6ea" }}
+                    placeholderIconColor="#007aff"
+                    selectedValue={this.state.choice}
+                    onValueChange={this.onSelectionChange.bind(this)}
+                  >
+                    {this.props.appointment.servicePrice.map((ele, index) => {
+                      return (
+                        <Picker.Item
+                          label={`${ele.service} : Rs. ${ele.price}`}
+                          value={index}
+                        />
+                      );
+                    })}
+                  </Picker>
+                </Item>
+
+              </Body>
+            </CardItem>
+            <CardItem footer bordered>
+              <Text bold>*Please confirm the above mentioned details</Text>
+            </CardItem>
+          </Card>
+
+          <Button gradient onPress={() => this.handleSubmit()}>
+            <Text bold white center>
+              Confirm
+            </Text>
+          </Button>
+
+        {/* <Block style={{ marginTop:-100 }} middle>
           <Input label="Name" value={withName} style={[styles.input]} />
           <Input label="Address" value={address} style={[styles.input]} />
-          {/* <Input label="Cause/Reason" value={} style={[styles.input]} /> */}
+          
 
           <DatePicker
             style={{ width: 200 }}
@@ -101,7 +177,7 @@ class Appointment extends Component {
               dateInput: {
                 marginLeft: 36,
               },
-              // ... You can check the source to find the other keys.
+              
             }}
             onDateChange={(datetime) => {
               this.setState({ datetime });
@@ -137,7 +213,7 @@ class Appointment extends Component {
               Confirm (100$)
             </Text>
           </Button>
-        </Block>
+        </Block> */}
       </Block>
     );
   }

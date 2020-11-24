@@ -84,17 +84,7 @@ class Explore extends Component {
 
   renderFooter() {
     return (
-      <LinearGradient
-        locations={[0.5, 1]}
-        style={styles.footer}
-        colors={["rgba(255,255,255,0)", "rgba(255,255,255,0.6)"]}
-      >
-        <Button gradient style={{ width: width / 2.678 }}>
-          <Text bold white center>
-            Filter
-          </Text>
-        </Button>
-      </LinearGradient>
+      <View></View>
     );
   }
   handleMakeAppointment(withName, withId, address, tags) {

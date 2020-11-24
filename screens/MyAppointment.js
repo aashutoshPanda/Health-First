@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet ,View,ScrollView,ActivityIndicator} from "react-native";
 
-import { Button, Block, Text } from "../components";
+import { Button, Block} from "../components";
 import { theme, mocks } from "../constants";
-import { ActivityIndicator } from "react-native";
+import { List, ListItem, Left, Right, Icon,Text } from "native-base";
+
 import {
   getMyAppointmentsAsync,
   selectLoading,
@@ -37,9 +38,30 @@ export default function Appointment(props) {
       style={{ marginTop: 10, marginBottom: 0 }}
       padding={[0, theme.sizes.base * 2]}
     >
-      <Text center h1 bold>
-        MYYY Apointment
+      <Text style={{fontWeight:"bold",fontSize:18,margin:18}}>
+        My Apointments
       </Text>
+
+      <ScrollView>
+        {mocks.recordData.map((item)=>{
+
+          return(
+            <View>
+                <List>
+                  <ListItem selected>
+                    <Left>
+                      <Text>{item.withName}</Text>
+                    </Left>
+                    <Right>
+                      <Text note>3:43 pm</Text>
+                    </Right>
+                  </ListItem>
+                </List>
+            </View>
+          )
+        })}
+      </ScrollView>
+
     </Block>
   );
 }

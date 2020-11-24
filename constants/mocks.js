@@ -82,9 +82,9 @@ const explore = [
 ];
 
 const profile = {
-  username: "react-ui-kit",
+  username: "Test",
   location: "Europe",
-  email: "contact@react-ui-kit.com",
+  email: "test@gmail.com",
   avatar: require("../assets/images/avatar.png"),
   budget: 1000,
   monthly_cap: 5000,
@@ -155,6 +155,15 @@ const days = [
 
 const glassImage = require("../assets/images/water-glass.png");
 const cataractLogo = require("../assets/images/cataract-logo.png");
+
+const recordData=[
+  {"address": "RK Nagar VV Vihar", "date": "2020_11_27", "price": 500, "service": "regular checkup", "time": "05:25", "withId": "docId1", "withName": "Dr. Arun"},
+  {"address": "RK Nagar VV Vihar", "date": "2020_11_27", "price": 500, "service": "regular checkup", "time": "05:25", "withId": "docId1", "withName": "Dr. Arun"},
+  {"address": "RK Nagar VV Vihar", "date": "2020_11_27", "price": 500, "service": "regular checkup", "time": "05:25", "withId": "docId1", "withName": "Dr. Arun"},
+  {"address": "RK Nagar VV Vihar", "date": "2020_11_27", "price": 500, "service": "regular checkup", "time": "05:25", "withId": "docId1", "withName": "Dr. Arun"},
+  {"address": "RK Nagar VV Vihar", "date": "2020_11_27", "price": 500, "service": "regular checkup", "time": "05:25", "withId": "docId1", "withName": "Dr. Arun"},
+]
+
 export {
   categories,
   explore,
@@ -164,4 +173,6 @@ export {
   glassImage,
   days,
   cataractLogo,
+  recordData
 };
+
