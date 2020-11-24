@@ -1,8 +1,8 @@
 # HEATHFIRST by Team Ode to Code
 
 ### Official submission for Optum Stratethon - Season 2
-
-### Software prerequisites
+From as simple as  writing your thoughts in your journal to a more advanced and efficient functionality of Cataract Detection Test, we team Ode to Code present you with our product HEALTHFIRST.
+HEALTHFIRST aims at reducing cost of health services  with the help of our scalable Mobile Application built on React Native with Firbase at the backend.
 
 <table>
   <tr>
@@ -47,6 +47,8 @@
   </tr>
   
  </table>
+ 
+### Software prerequisites
 Install the below tools/packages
 
 | Serial No |     Software     |  Version  | Installation site                                                          |
