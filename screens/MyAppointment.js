@@ -14,6 +14,7 @@ import { selectUserId } from "../store/slices/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Appointment(props) {
+
   const id = useSelector(selectUserId);
   const loading = useSelector(selectLoading);
   const appointments = useSelector(selectMyAppointments);

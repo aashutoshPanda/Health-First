@@ -28,15 +28,15 @@ import { Button, Block, Text } from "../components/index";
 import { View } from "react-native";
 
 const screens = createStackNavigator(
-  {
+  { 
     
     Welcome,
     MyAppointment,
+    Dietplan,
     Explore,
     Camera,
     Login,
     SignUp,
-    Dietplan,
     Browse,
     AddToJournal,
     Journal,
@@ -61,7 +61,7 @@ const screens = createStackNavigator(
         </View>
       ),
       headerStyle: {
-        marginTop: -30,
+        marginTop: 0,
         borderBottomColor: "transparent",
         elevation: 1,
       },

@@ -35,6 +35,7 @@ class Journal extends Component {
   componentDidMount() {
     this.props.getJournalsAsync(this.props.auth.id);
   }
+
   render() {
     if (!this.state.isReady) {
       return <ActivityIndicator />;
@@ -47,6 +48,7 @@ class Journal extends Component {
     for (const [key, value] of Object.entries(journals)) {
       const { content, rating } = value;
       const date = key.replace(/_/g, "-");
+
       const item = (
         <ListItem thumbnail>
           <Body>

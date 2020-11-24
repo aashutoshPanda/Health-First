@@ -6,15 +6,15 @@ export const diet = [
         {
           value: 40,
           label: 'Carbohydrates',
-          color: '#fca311',
+          color: 'A6B07E',
         }, {
           value: 50,
           label: 'Protein',
-          color: '#14213d'
+          color: '68A357'
         }, {
           value: 55,
           label: 'Calcium',
-          color: '#ef233c'
+          color: '32965D'
         }
     
       ]
@@ -124,15 +124,15 @@ export const diet = [
         {
           value: 40,
           label: 'Carbohydrates',
-          color: '#fca311',
+          color: '#A6B07E',
         }, {
           value: 50,
           label: 'Protein',
-          color: '#14213d'
+          color: '#68A357'
         }, {
           value: 55,
           label: 'Calcium',
-          color: '#ef233c'
+          color: '#32965D'
         }
     
       ]
@@ -242,15 +242,15 @@ export const diet = [
         {
           value: 40,
           label: 'Carbohydrates',
-          color: '#fca311',
+          color: 'A6B07E',
         }, {
           value: 50,
           label: 'Protein',
-          color: '#14213d'
+          color: '68A357'
         }, {
           value: 55,
           label: 'Calcium',
-          color: '#ef233c'
+          color: '32965D'
         }
     
       ]
@@ -360,15 +360,15 @@ export const diet = [
         {
           value: 40,
           label: 'Carbohydrates',
-          color: '#fca311',
+          color: 'A6B07E',
         }, {
           value: 50,
           label: 'Protein',
-          color: '#14213d'
+          color: '68A357'
         }, {
           value: 55,
           label: 'Calcium',
-          color: '#ef233c'
+          color: '32965D'
         }
     
       ]
