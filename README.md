@@ -1,4 +1,4 @@
-# health-management-app
+# HEATHFIRST by Team Ode to Code
 
 ### Software prerequisites
 
