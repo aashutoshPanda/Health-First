@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet ,View,ScrollView,ActivityIndicator} from "react-native";
 
-import { Button, Block} from "../components";
+import {Block} from "../components";
 import { theme, mocks } from "../constants";
-import { List, ListItem, Left, Right, Icon,Text, Body } from "native-base";
+import { List, ListItem, Left, Right, Icon,Text, Body,Button,Footer,FooterTab } from "native-base";
 
 import {
   getMyAppointmentsAsync,
@@ -35,12 +35,15 @@ export default function Appointment(props) {
   console.log("my appointments to show = ", appointments);
 
   return (
-    <View style={{width:"100%",alignItems:"center"}}>
-      <Text style={{fontWeight:"bold",fontSize:18,textAlign:"center",marginBottom:15,marginTop:15}}>
-        My Apointments
-      </Text>
+    <View>
+      
+      <View >
+        <Text style={{fontWeight:"bold",fontSize:18,margin:20,textAlign:"center"}}>
+          My Apointments
+        </Text>
+      </View>
 
-      <View style={{width:"90%"}}>
+      <ScrollView style={{width:"100%"}}>
         {appointments.map((item)=>{
 
           return(
@@ -62,7 +65,9 @@ export default function Appointment(props) {
             </View>
           )
         })}
-      </View>
+      </ScrollView>
+      
+      
 
     </View>
   );

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, ActivityIndicator } from "react-native";
+import {View, StyleSheet, ActivityIndicator } from "react-native";
 import {
   Header,
   Title,
@@ -12,16 +12,14 @@ import {
   Form,
   Item,
   Picker,
-  Text,
   Textarea,
   Footer,
   FooterTab,
-  Button,
 } from "native-base";
 import * as Font from "expo-font";
 import { addEntryAsync, setShouldNavigate } from "../store/slices/journalSlice";
 import { connect } from "react-redux";
-
+import {Text,Button} from '../components/index'
 const dateFormatOption = {
   month: "2-digit",
   day: "2-digit",
@@ -66,25 +64,22 @@ class AddToJournal extends Component {
       navigation.navigate("Journal");
     }
     return (
-      <Container>
-        <Header>
-          <Left>
-            <Button transparent>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>{today}</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
+      <View style={{alignItems:"center"}}>
+
+        <View style={{width:"100%"}}>
+          <Text style={{margin:40}} h1 bold>
+            Share Your Day!
+          </Text>
+        </View>
+
+        <View style={{width:"80%"}}>
+
           <Form>
-            <Text>How Was Your Mood Today ?</Text>
+            <Text bold>How Was Your Mood Today ?</Text>
             <Item picker>
               <Picker
                 mode="dropdown"
-                style={{ width: 250 }}
+                style={{ width: 250,fontWeight:"bold" }}
                 placeholder="Select A Mood ?"
                 placeholderStyle={{ color: "#bfc6ea" }}
                 placeholderIconColor="#007aff"
@@ -98,23 +93,33 @@ class AddToJournal extends Component {
                 <Picker.Item label="Awesome" value="5" />
               </Picker>
             </Item>
+
+            <Text style={{marginTop:20,marginBottom:10}} bold>How would you describe your day ?</Text>            
+
             <Textarea
               rowSpan={9}
               bordered
-              placeholder="Textarea"
+              placeholder="Share your thoughts..."
               value={this.state.textFilled}
               onChange={this.handleTextChange}
             />
           </Form>
-        </Content>
-        <Footer>
+        </View>
+        
+        <Button style={{width:150,marginTop:20}} gradient onPress={() => this.handleAddEntry()}>
+            <Text bold white center>
+              Add this day!
+            </Text>
+          </Button>
+
+        {/* <Footer>
           <FooterTab>
             <Button onPress={() => this.handleAddEntry()} full>
               <Text>ADD TODAY'S STORY</Text>
             </Button>
           </FooterTab>
-        </Footer>
-      </Container>
+        </Footer> */}
+      </View>
     );
   }
 }
