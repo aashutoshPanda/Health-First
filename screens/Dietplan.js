@@ -111,15 +111,14 @@ export default function DietPlan() {
         <Text style={{margin:20,fontWeight:"bold",fontStyle:"italic",fontSize:18}}>Your Menu -</Text>
 
         <View style={{marginLeft:20,flex:1,flexDirection:"row"}}>
-            <Button info rounded style={{margin:10,padding:8}}>
-              <Text style={{padding:0,fontSize:18,color:"white",fontWeight:"bold"}}>{diet[dayNumber][foodType].meal[0]}</Text>
-            </Button>
-            <Button success rounded style={{margin:10,padding:8}}>
-              <Text style={{padding:0,fontSize:18,color:"white",fontWeight:"bold"}}>{diet[dayNumber][foodType].meal[1]}</Text>
-            </Button>
-            <Button danger rounded style={{margin:10,padding:8}}>
-              <Text style={{padding:0,fontSize:18,color:"white",fontWeight:"bold"}}>{diet[dayNumber][foodType].meal[2]}</Text>
-            </Button>
+              <Text style={{margin:8,fontSize:18,color:"black",fontWeight:"bold"}}>1.{diet[dayNumber][foodType].meal[0]}</Text>
+
+            
+              <Text style={{margin:8,fontSize:18,color:"black",fontWeight:"bold"}}>2.{diet[dayNumber][foodType].meal[1]}</Text>
+           
+            
+              <Text style={{margin:8,fontSize:18,color:"black",fontWeight:"bold"}}>3.{diet[dayNumber][foodType].meal[2]}</Text>
+            
         </View>
 
       </Content>
