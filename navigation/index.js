@@ -13,7 +13,7 @@ import Product from "../screens/Product";
 import Settings from "../screens/Settings";
 import Appointment from "../screens/Appointment";
 import MyAppointment from "../screens/MyAppointment";
-// import Dietplan from "../screens/Dietplan";
+import Dietplan from "../screens/Dietplan";
 import Moodtracker from "../screens/Moodtracker";
 import Waterlevel from "../screens/Waterlevel";
 import Journal from "../screens/journal";
@@ -29,13 +29,13 @@ import { View } from "react-native";
 
 const screens = createStackNavigator(
   {
+    Welcome,
     MyAppointment,
     Explore,
-    Welcome,
     Camera,
     Login,
     SignUp,
-    // Dietplan,
+    Dietplan,
     Browse,
     AddToJournal,
     Journal,

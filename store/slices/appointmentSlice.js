@@ -84,10 +84,7 @@ export const getMyAppointmentsAsync = (id) => (dispatch) => {
   dispatch(setLoading(true));
   const db = firebase.database();
   db.ref(`appointment/${id}/`).once("value", (snapshot) => {
-    console.log("snapshot val = ", JSON.stringify(snapshot.val()));
-    const d = snapshot.val();
-    console.log(d[id]);
-    dispatch(setMyAppointments(snapshot.val()[id]));
+    dispatch(setMyAppointments(snapshot.val()));
     dispatch(setLoading(false));
   });
 };
