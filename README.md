@@ -72,7 +72,7 @@ Install the below tools/packages
 7. To run the expo app `expo start`
 8. To run the flask server move to the "flask_app" directory & run it `cd flask_app` `python main.py`
 
-NOTE : For making request from mobile device to the flask app(running locally) change your local address appropriately in `const apiUrl = "http://192.168.1.5:8080/detect";` in "screens/Camera.js"
+NOTE : For making request from mobile device to the flask app(running locally) replace the provided address(192.168.1.5) with your local address appropriately in `const apiUrl = "http://192.168.1.5:8080/detect";` in "screens/Camera.js"
 
 you can write your env specific config variables on `.env` file and import them from `react-native-dotenv` package as mentioned [here](https://github.com/zetachang/react-native-dotenv#usage).
 
