@@ -66,8 +66,13 @@ Install the below tools/packages
 1. Clone the repo with `git clone [REPO_URL]` command
 2. Switch to the project's root directory in terminal
 3. Install the dependencies by running `npm install`
-4. Once, 'npm install' is completed, run `expo start` to start the expo and react-native server
-5. If it shows a QR code on the terminal as a result of 'expo start' command, then you are good to go!
+4. Make virtual env named "env" by `python3 -m venv env`
+5. Activate it by `source env/bin/activate`
+6. Install the python packages required by `pip install -r requirements.txt`
+7. To run the expo app `expo start`
+8. To run the flask server move to the "flask_app" directory & run it `cd flask_app` `python main.py`
+
+NOTE : For making request from mobile device to the flask app(running locally) change your local address appropriately in `const apiUrl = "http://192.168.1.5:8080/detect";` in "screens/Camera.js"
 
 you can write your env specific config variables on `.env` file and import them from `react-native-dotenv` package as mentioned [here](https://github.com/zetachang/react-native-dotenv#usage).
 
