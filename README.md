@@ -1,4 +1,4 @@
-# "HEATH FIRST" by Team Ode to Code
+# "HEALTH FIRST" by Team Ode to Code
 
 ### Official submission for Optum Stratethon - Season 2
 From as simple as  writing your thoughts in your journal to a more advanced and efficient functionality of Cataract Detection Test, we team Ode to Code present you with our product HEALTHFIRST.
