@@ -1,7 +1,7 @@
 # "HEALTH FIRST" by Rising Heights
 
 ### Official submission-
-From as simple as  writing your thoughts in your journal to a more advanced and efficient functionality of Cataract Detection Test, we team Ode to Code present you with our product HEALTH FIRST.
+From as simple as  writing your thoughts in your journal to a more advanced and efficient functionality of Cataract Detection Test, we team Rising Heights present you with our product HEALTH FIRST.
 HEALTH FIRST aims at reducing cost of health services  with the help of our scalable Mobile Application built on React Native with Firbase at the backend.
 
 <table>
